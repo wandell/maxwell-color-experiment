@@ -35,17 +35,72 @@ function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
 export default function Home() {
   // States of the position of slit 1, slit 2, etc.
   const [s1nm, sets1nm] = useState<number>(380);
+  const [s1Size, sets1Size] = useState<number>(0);
+  const [s2nm, sets2nm] = useState<number>(380);
+  const [s2Size, sets2Size] = useState<number>(0);
+
   const nmToXYZTable = conversionTable();
 
-  const handleSliderChange = (value: number | number[]) => {
+  // Currently only takes the combination of 2 XYZ
+  const combineXYZ = (XYZ1: number[], XYZ2: number[]) => {
+    const combinedX = (XYZ1[0] * s1Size) / 100 + (XYZ2[0] * s2Size) / 100;
+    const combinedY = (XYZ1[1] * s1Size) / 100 + (XYZ2[1] * s2Size) / 100;
+    const combinedZ = (XYZ1[2] * s1Size) / 100 + (XYZ2[2] * s2Size) / 100;
+
+    return [combinedX, combinedY, combinedZ];
+  };
+
+  const handleSliderChange = (value: number | number[], sliderId: number) => {
     if (Array.isArray(value)) {
       // Handle the case when the value is an array
       // For your case, you might take the first element of the array or handle it differently
-      sets1nm(value[0]);
-      // console.log(value[0]);
+      switch (sliderId) {
+        case 1:
+          sets1nm(value[0]);
+          break;
+        case 2:
+          sets2nm(value[0]);
+          break;
+      }
     } else {
       // Handle the case when the value is a number
-      sets1nm(value);
+      switch (sliderId) {
+        case 1:
+          sets1nm(value);
+          break;
+        case 2:
+          sets2nm(value);
+          break;
+      }
+      // console.log(value);
+    }
+  };
+
+  const handleSliderChangeAmount = (
+    value: number | number[],
+    sliderId: number
+  ) => {
+    if (Array.isArray(value)) {
+      // Handle the case when the value is an array
+      // For your case, you might take the first element of the array or handle it differently
+      switch (sliderId) {
+        case 1:
+          sets1Size(value[0]);
+          break;
+        case 2:
+          sets2Size(value[0]);
+          break;
+      }
+    } else {
+      // Handle the case when the value is a number
+      switch (sliderId) {
+        case 1:
+          sets1Size(value);
+          break;
+        case 2:
+          sets2Size(value);
+          break;
+      }
       // console.log(value);
     }
   };
@@ -53,6 +108,17 @@ export default function Home() {
   const nmToRGB = (value: number) => {
     const XYZValues = nmToXYZTable[value];
     const RGB = xyzToRgb(XYZValues[0], XYZValues[1], XYZValues[2]);
+    console.log(RGB);
+    return RGB;
+  };
+
+  const nmToRGB2 = (value1: number, value2: number) => {
+    const XYZValues1 = nmToXYZTable[value1];
+    const XYZValues2 = nmToXYZTable[value2];
+
+    const combinedXYZ = combineXYZ(XYZValues1, XYZValues2);
+
+    const RGB = xyzToRgb(combinedXYZ[0], combinedXYZ[1], combinedXYZ[2]);
     console.log(RGB);
     return RGB;
   };
@@ -71,15 +137,55 @@ export default function Home() {
   return (
     <main className="min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <div style={style(nmToRGB(s1nm))}></div>
+        <div className="flex">
+          <div style={style(nmToRGB(s1nm))}>
+            <p>Slider 1</p>
+          </div>
+          <div style={style(nmToRGB(s2nm))}>
+            <p>Slider 2</p>
+          </div>
+          <div style={style(nmToRGB2(s1nm, s2nm))}>
+            <p>Combined</p>
+          </div>
+        </div>
+
         <div className="block">
           <p>{s1nm}</p>
+          <p>{s2nm}</p>
           <p>{nmToXYZTable[s1nm]}</p>
           <p>{nmToRGB(s1nm)}</p>
         </div>
 
-        <div className="block">
-          <Slider step={5} onChange={handleSliderChange} min={380} max={780} />
+        <b>Slit 1</b>
+        <div className="flex h-[150px] gap-[10px] align-center">
+          <Slider
+            step={5}
+            onChange={(e) => handleSliderChange(e, 1)}
+            min={380}
+            max={780}
+          />
+          <Slider
+            onChange={(e) => handleSliderChangeAmount(e, 1)}
+            min={0}
+            max={100}
+            vertical={true}
+          />
+        </div>
+
+        <b>Slit 2</b>
+        <div className="flex h-[150px] gap-[10px] align-center">
+          <Slider
+            step={5}
+            onChange={(e) => handleSliderChange(e, 2)}
+            min={380}
+            max={780}
+          />
+          <Slider
+            onChange={(e) => handleSliderChangeAmount(e, 2)}
+            min={0}
+            max={100}
+            vertical={true}
+          />
         </div>
       </div>
     </main>
