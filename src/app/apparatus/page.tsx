@@ -157,6 +157,7 @@ export default function Home() {
     return {
       width: "10rem", // 40 pixels
       height: "10rem", // 40 pixels
+      textStroke: "1px white",
       backgroundColor: `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`, // Use redValue for the red color value
     };
   };
@@ -166,7 +167,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex-col items-center justify-between p-24">
+    <main className="min-h-screen flex-col items-center justify-between p-24 pt-8">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
         <MaxwellApparatus
           slit1Pos={s1nm}
@@ -178,26 +179,74 @@ export default function Home() {
           observerColor={observerColorCompute(nmToRGBMixed(s1nm, s2nm, s3nm))}
         />
         <div className="flex">
-          <div style={style(nmToRGB(s1nm))}>
-            <p>Slider 1</p>
+          <div style={style(nmToRGB(s1nm))}></div>
+          <div style={style(nmToRGB(s2nm))}></div>
+          <div style={style(nmToRGB(s3nm))}></div>
+          <div style={style(nmToRGBMixed(s1nm, s2nm, s3nm))}></div>
+        </div>
+        <div className="flex">
+          <div
+            style={{
+              width: "10rem", // 40 pixels
+              height: "15rem", // 40 pixels
+            }}
+          >
+            <p>
+              <b>Slit 1</b>
+            </p>
+            <p>{s1nm}</p>
+            <p>{s1Size}</p>
+            <b>XYZ</b>
+            <p>{nmToXYZTable[s1nm][0]}</p>
+            <p>{nmToXYZTable[s1nm][1]}</p>
+            <p>{nmToXYZTable[s1nm][2]}</p>
+            <b>RGB</b>
+            <p>{JSON.stringify(nmToRGB(s1nm))}</p>
           </div>
-          <div style={style(nmToRGB(s2nm))}>
-            <p>Slider 2</p>
+          <div
+            style={{
+              width: "10rem", // 40 pixels
+              height: "5rem", // 40 pixels
+            }}
+          >
+            <p>
+              <b>Slit 2</b>
+            </p>
+            <p>{s2nm}</p>
+            <p>{s2Size}</p>
+            <b>XYZ</b>
+            <p>{nmToXYZTable[s2nm][0]}</p>
+            <p>{nmToXYZTable[s2nm][1]}</p>
+            <p>{nmToXYZTable[s2nm][2]}</p>
+            <b>RGB</b>
+            <p>{JSON.stringify(nmToRGB(s2nm))}</p>
           </div>
-          <div style={style(nmToRGB(s3nm))}>
-            <p>Slider 3</p>
+          <div
+            style={{
+              width: "10rem", // 40 pixels
+              height: "5rem", // 40 pixels
+            }}
+          >
+            <p>
+              <b>Slit 3</b>
+            </p>
+            <p>{s3nm}</p>
+            <p>{s3Size}</p>
+            <b>XYZ</b>
+            <p>{nmToXYZTable[s3nm][0]}</p>
+            <p>{nmToXYZTable[s3nm][1]}</p>
+            <p>{nmToXYZTable[s3nm][2]}</p>
+            <b>RGB</b>
+            <p>{JSON.stringify(nmToRGB(s3nm))}</p>
           </div>
-          <div style={style(nmToRGBMixed(s1nm, s2nm, s3nm))}>
+          <div
+            style={{
+              width: "10rem", // 40 pixels
+              height: "5rem", // 40 pixels
+            }}
+          >
             <p>Combined</p>
           </div>
-        </div>
-
-        <div className="block">
-          <p>{s1nm}</p>
-          <p>{s2nm}</p>
-          <p>{s3nm}</p>
-          <p>{nmToXYZTable[s1nm]}</p>
-          <p>{nmToRGB(s1nm)}</p>
         </div>
 
         <b>Slit 1</b>
