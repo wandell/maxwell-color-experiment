@@ -34,19 +34,35 @@ function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
 }
 
 export default function Home() {
+  const defaultSlitWidth = 30;
+  const defaultRed = 630;
+  const defaultGreen = 530;
+  const defaultBlue = 455;
+
   // States of the position of slit 1, slit 2, etc.
-  const [s1nm, sets1nm] = useState<number>(380);
-  const [s1Size, sets1Size] = useState<number>(0);
-  const [s2nm, sets2nm] = useState<number>(380);
-  const [s2Size, sets2Size] = useState<number>(0);
+  const [s1nm, sets1nm] = useState<number>(defaultRed);
+  const [s1Size, sets1Size] = useState<number>(defaultSlitWidth);
+  const [s2nm, sets2nm] = useState<number>(defaultGreen);
+  const [s2Size, sets2Size] = useState<number>(defaultSlitWidth);
+  const [s3nm, sets3nm] = useState<number>(defaultBlue);
+  const [s3Size, sets3Size] = useState<number>(defaultSlitWidth);
 
   const nmToXYZTable = conversionTable();
 
   // Currently only takes the combination of 2 XYZ
-  const combineXYZ = (XYZ1: number[], XYZ2: number[]) => {
-    const combinedX = (XYZ1[0] * s1Size) / 100 + (XYZ2[0] * s2Size) / 100;
-    const combinedY = (XYZ1[1] * s1Size) / 100 + (XYZ2[1] * s2Size) / 100;
-    const combinedZ = (XYZ1[2] * s1Size) / 100 + (XYZ2[2] * s2Size) / 100;
+  const combineXYZ = (XYZ1: number[], XYZ2: number[], XYZ3: number[]) => {
+    const combinedX =
+      (XYZ1[0] * s1Size) / 100 +
+      (XYZ2[0] * s2Size) / 100 +
+      (XYZ3[0] * s3Size) / 100;
+    const combinedY =
+      (XYZ1[1] * s1Size) / 100 +
+      (XYZ2[1] * s2Size) / 100 +
+      (XYZ3[0] * s3Size) / 100;
+    const combinedZ =
+      (XYZ1[2] * s1Size) / 100 +
+      (XYZ2[2] * s2Size) / 100 +
+      (XYZ3[0] * s3Size) / 100;
 
     return [combinedX, combinedY, combinedZ];
   };
@@ -62,6 +78,9 @@ export default function Home() {
         case 2:
           sets2nm(value[0]);
           break;
+        case 3:
+          sets3nm(value[0]);
+          break;
       }
     } else {
       // Handle the case when the value is a number
@@ -71,6 +90,9 @@ export default function Home() {
           break;
         case 2:
           sets2nm(value);
+          break;
+        case 3:
+          sets3nm(value);
           break;
       }
       // console.log(value);
@@ -91,6 +113,9 @@ export default function Home() {
         case 2:
           sets2Size(value[0]);
           break;
+        case 3:
+          sets3Size(value[0]);
+          break;
       }
     } else {
       // Handle the case when the value is a number
@@ -100,6 +125,9 @@ export default function Home() {
           break;
         case 2:
           sets2Size(value);
+          break;
+        case 3:
+          sets3Size(value);
           break;
       }
       // console.log(value);
@@ -113,11 +141,12 @@ export default function Home() {
     return RGB;
   };
 
-  const nmToRGB2 = (value1: number, value2: number) => {
+  const nmToRGBMixed = (value1: number, value2: number, value3: number) => {
     const XYZValues1 = nmToXYZTable[value1];
     const XYZValues2 = nmToXYZTable[value2];
+    const XYZValues3 = nmToXYZTable[value3];
 
-    const combinedXYZ = combineXYZ(XYZValues1, XYZValues2);
+    const combinedXYZ = combineXYZ(XYZValues1, XYZValues2, XYZValues3);
 
     const RGB = xyzToRgb(combinedXYZ[0], combinedXYZ[1], combinedXYZ[2]);
     // console.log(RGB);
@@ -145,11 +174,11 @@ export default function Home() {
         <MaxwellApparatus
           slit1Pos={s1nm}
           slit1Size={s1Size}
-          slit2Pos={0}
-          slit2Size={10}
-          slit3Pos={0}
-          slit3Size={10}
-          observerColor={observerColorCompute(nmToRGB2(s1nm, s2nm))}
+          slit2Pos={s2nm}
+          slit2Size={s2Size}
+          slit3Pos={s3nm}
+          slit3Size={s3Size}
+          observerColor={observerColorCompute(nmToRGBMixed(s1nm, s2nm, s3nm))}
         />
         <div className="flex">
           <div style={style(nmToRGB(s1nm))}>
@@ -158,7 +187,10 @@ export default function Home() {
           <div style={style(nmToRGB(s2nm))}>
             <p>Slider 2</p>
           </div>
-          <div style={style(nmToRGB2(s1nm, s2nm))}>
+          <div style={style(nmToRGB(s3nm))}>
+            <p>Slider 3</p>
+          </div>
+          <div style={style(nmToRGBMixed(s1nm, s2nm, s3nm))}>
             <p>Combined</p>
           </div>
         </div>
@@ -166,6 +198,7 @@ export default function Home() {
         <div className="block">
           <p>{s1nm}</p>
           <p>{s2nm}</p>
+          <p>{s3nm}</p>
           <p>{nmToXYZTable[s1nm]}</p>
           <p>{nmToRGB(s1nm)}</p>
         </div>
@@ -177,12 +210,15 @@ export default function Home() {
             onChange={(e) => handleSliderChange(e, 1)}
             min={400}
             max={700}
+            defaultValue={defaultRed}
+            reverse={true}
           />
           <Slider
             onChange={(e) => handleSliderChangeAmount(e, 1)}
             min={0}
             max={100}
             vertical={true}
+            defaultValue={defaultSlitWidth}
           />
         </div>
 
@@ -193,12 +229,33 @@ export default function Home() {
             onChange={(e) => handleSliderChange(e, 2)}
             min={400}
             max={700}
+            defaultValue={defaultGreen}
+            reverse={true}
           />
           <Slider
             onChange={(e) => handleSliderChangeAmount(e, 2)}
             min={0}
             max={100}
             vertical={true}
+            defaultValue={defaultSlitWidth}
+          />
+        </div>
+        <b>Slit 3</b>
+        <div className="flex h-[150px] gap-[10px] align-center">
+          <Slider
+            step={5}
+            onChange={(e) => handleSliderChange(e, 3)}
+            min={400}
+            max={700}
+            defaultValue={defaultBlue}
+            reverse={true}
+          />
+          <Slider
+            onChange={(e) => handleSliderChangeAmount(e, 3)}
+            min={0}
+            max={100}
+            vertical={true}
+            defaultValue={defaultSlitWidth}
           />
         </div>
       </div>

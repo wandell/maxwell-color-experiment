@@ -33,24 +33,46 @@ export default function MaxwellApparatus({
   const startNm = 400;
   const endNm = 700;
 
-  const computeSlitPosition = (slit1Pos: number, slit1Size: number) => {
-    // Calculate the center y position
-    // Calculate the ratio
-    const nmRatio = (endNm - slit1Pos) / (endNm - startNm);
-    const nmCenter = -(
-      (spectrum1leftStart - spectrum1leftEnd) * nmRatio -
-      spectrum1leftStart
-    );
+  const computeSlitPosition = (
+    slit1Pos: number,
+    slit1Size: number,
+    slit2Pos: number,
+    slit2Size: number,
+    slit3Pos: number,
+    slit3Size: number
+  ) => {
+    const calcCenter = (nm: number) => {
+      // Calculate the center y position
+      // Calculate the ratio
+      const nmRatio = (endNm - nm) / (endNm - startNm);
+      const nmCenter = -(
+        (spectrum1leftStart - spectrum1leftEnd) * nmRatio -
+        spectrum1leftStart
+      );
+      return nmCenter;
+    };
 
-    // Compute the width based on the slit size
-    // Each slit position should be adjusted by +- widthRatio / 2 to keep the center aligned
-    const widthRatio = 1 - (100 - slit1Size) / (100 - 0);
-    console.log(widthRatio);
-    const width = -((spectrum1leftStart - spectrum1leftEnd) * widthRatio);
+    const calcWidth = (width: number) => {
+      // Compute the width based on the slit size
+      // Each slit position should be adjusted by +- widthRatio / 2 to keep the center aligned
+      const widthRatio = 1 - (100 - width) / (100 - 0);
+      // /30 is just a way to adjust the overall scale. It's a completely arbitary figure
+      const widthSize =
+        -((spectrum1leftStart - spectrum1leftEnd) * widthRatio) / 30;
+
+      return widthSize;
+    };
 
     // console.log([nmCenter - width, nmCenter + width]);
     // First position for left-spectrum, left-edge
-    return [nmCenter - width, nmCenter + width];
+    return [
+      calcCenter(slit1Pos) - calcWidth(slit1Size),
+      calcCenter(slit1Pos) + calcWidth(slit1Size),
+      calcCenter(slit2Pos) - calcWidth(slit2Size),
+      calcCenter(slit2Pos) + calcWidth(slit2Size),
+      calcCenter(slit3Pos) - calcWidth(slit3Size),
+      calcCenter(slit3Pos) + calcWidth(slit3Size),
+    ];
   };
 
   return (
@@ -70,7 +92,7 @@ export default function MaxwellApparatus({
           transform="translate(-379 -251)"
           fill="#f1f1f1"
         />
-        <g id="Apparatus" clip-path="url(#clip0_0_1)">
+        <g id="Apparatus" clipPath="url(#clip0_0_1)">
           <g id="Observer View">
             <path
               id="Observer View_2"
@@ -86,7 +108,7 @@ export default function MaxwellApparatus({
                 transform="rotate(-11.9914 851.157 340.156)"
                 fill="#3B3B3B"
                 stroke="#505050"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <path
                 id="Right Side"
@@ -99,7 +121,7 @@ export default function MaxwellApparatus({
                 fill={observerColor}
               />
             </g>
-            <g id="Eye" clip-path="url(#clip1_0_1)">
+            <g id="Eye" clipPath="url(#clip1_0_1)">
               <path
                 id="Vector"
                 d="M1041.3 305.856C1049.89 304.439 1058.69 306.355 1065.91 311.208L1067.2 309.979C1067.54 309.663 1067.87 309.319 1068.23 309.021L1069.32 308.127C1072.15 305.666 1075.32 303.677 1078.52 301.778L1078.51 301.778C1079.39 301.262 1080.51 301.536 1081.05 302.396C1081.59 303.259 1081.34 304.394 1080.49 304.95L1080.41 305.007C1077.49 306.926 1074.6 308.904 1072.08 311.301L1071.11 312.172C1070.79 312.458 1070.51 312.789 1070.2 313.098L1069.42 313.902L1068.4 314.967L1066.95 316.702L1066.74 316.957C1066.47 317.292 1066.17 317.607 1065.92 317.956L1065.17 319.01L1064.41 320.058L1064.03 320.581L1063.68 321.131L1062.32 323.33C1061.89 324.071 1061.5 324.843 1061.09 325.599C1060.66 326.345 1060.31 327.137 1059.95 327.923C1059.2 329.469 1058.61 331.094 1057.99 332.7L1057.19 335.166C1056.92 335.981 1056.73 336.829 1056.49 337.657L1056.49 337.654C1055.62 341.01 1055.01 344.423 1054.64 347.868C1054.28 351.328 1054.15 354.804 1054.23 358.28C1054.26 359.719 1054.33 361.156 1054.44 362.595C1054.44 362.595 1054.7 365.509 1053.12 367.218L1053.12 367.215C1052.96 367.366 1052.79 367.495 1052.61 367.608C1050.83 368.55 1047.66 366.789 1046.75 365.598L1046.74 365.59C1046.27 364.899 1045.8 364.209 1045.32 363.523L1045.32 363.519C1041.97 358.692 1038.38 354.036 1034.56 349.567C1030.78 345.104 1026.66 340.93 1022.25 337.084C1020.58 335.634 1018.84 334.249 1017.04 332.955C1015.97 332.177 1014.87 331.428 1013.75 330.728C1011.85 329.521 1009.89 328.433 1007.86 327.474L1007.83 327.455C1006.91 327.018 1006.51 325.934 1006.92 325.008C1007.33 324.081 1008.4 323.648 1009.34 324.033C1011.31 324.84 1013.23 325.758 1015.09 326.776C1019.59 315.714 1029.52 307.79 1041.3 305.856ZM1018.36 328.676C1020.72 330.151 1023.01 331.746 1025.21 333.456C1030.01 337.225 1034.53 341.348 1038.72 345.796C1041.88 349.096 1044.88 352.531 1047.76 356.069L1047.75 356.066C1047.89 353.063 1048.17 350.071 1048.61 347.097C1049.17 343.381 1050 339.713 1051.09 336.12C1051.39 335.225 1051.64 334.318 1051.97 333.441L1052.96 330.795C1053.71 329.067 1054.43 327.325 1055.33 325.667C1055.76 324.825 1056.18 323.986 1056.68 323.182C1057.17 322.374 1057.63 321.546 1058.14 320.756L1059.74 318.421L1060.13 317.845L1060.57 317.286L1062.32 315.067C1062.62 314.698 1062.95 314.365 1063.26 314.008L1063.3 313.971C1058.98 311.201 1054.04 309.565 1048.92 309.217C1050.1 310.091 1051.01 311.285 1051.53 312.657C1051.71 313.13 1051.84 313.619 1051.92 314.117C1050.57 312.981 1048.29 312.69 1046.1 313.523C1043.17 314.644 1041.47 317.347 1042.32 319.581C1043.16 321.807 1046.23 322.708 1049.16 321.594L1049.17 321.59C1049.41 321.498 1049.66 321.388 1049.89 321.264C1048.11 323.564 1045.72 325.314 1042.99 326.315C1036.37 328.829 1029.45 326.797 1027.55 321.767C1026.86 319.879 1026.9 317.805 1027.65 315.945C1023.5 319.311 1020.3 323.698 1018.36 328.676L1018.36 328.676Z"
@@ -114,7 +136,7 @@ export default function MaxwellApparatus({
                 x2="1008.88"
                 y2="363.516"
                 stroke="#CCCCCC"
-                stroke-dasharray="2 2"
+                strokeDasharray="2 2"
               />
               <line
                 id="TopLine"
@@ -123,7 +145,7 @@ export default function MaxwellApparatus({
                 x2="1001.11"
                 y2="309.512"
                 stroke="#CCCCCC"
-                stroke-dasharray="2 2"
+                strokeDasharray="2 2"
               />
             </g>
           </g>
@@ -183,7 +205,7 @@ export default function MaxwellApparatus({
                   d="M974.215 106.558L929.999 79.3258L930.164 79.0504L974.342 106.348L974.215 106.558Z"
                   fill="#373737"
                   stroke="#373737"
-                  stroke-width="0.0714275"
+                  strokeWidth="0.0714275"
                 />
               </g>
             </g>
@@ -193,10 +215,19 @@ export default function MaxwellApparatus({
                 d="M8 182V42L924 80.3212V90.5L8 182Z"
                 fill="url(#pattern1)"
               />
-              {/* <g id="shutter-4-group_2">
+              <g id="shutter-4-group_2">
                 <path
                   id="shutter-4_2"
-                  d="M924 87.5L8 150V182L924 90.5V87.5Z"
+                  d={`M924 87.5L8 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[5]
+                  }V182L924 90.5V87.5Z`}
                   fill="#373737"
                 />
                 <path
@@ -208,7 +239,25 @@ export default function MaxwellApparatus({
               <g id="shutter-3-group_2">
                 <path
                   id="shutter-3_2"
-                  d="M924 85L8 102V140L924 86.5V85Z"
+                  d={`M924 85L8 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[3]
+                  }V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[4]
+                  }L924 86.5V85Z`}
                   fill="#373737"
                 />
                 <path
@@ -216,13 +265,29 @@ export default function MaxwellApparatus({
                   d="M8 140V102L18 101.809V139.418L8 140Z"
                   fill="#CCCCCC"
                 />
-              </g> */}
+              </g>
               <g id="shutter-2-group_2">
                 <path
                   id="shutter-2_2"
                   d={`M924 82.5L8 ${
-                    computeSlitPosition(slit1Pos, slit1Size)[1]
-                  }V96L924 83.9998V82.5Z}`}
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[1]
+                  }V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[2]
+                  }L924 83.9998V82.5Z}`}
                   fill="#373737"
                 />
                 <path
@@ -235,7 +300,14 @@ export default function MaxwellApparatus({
                 <path
                   id="shutter-1_2"
                   d={`M8.5 42V${
-                    computeSlitPosition(slit1Pos, slit1Size)[0]
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[0]
                   }L923.5 80.4797V80.4814L8.5 42Z`}
                   fill="#373737"
                   stroke="#373737"
@@ -285,15 +357,15 @@ export default function MaxwellApparatus({
               id="Mirror"
               d="M951.5 6L977 26"
               stroke="white"
-              stroke-width="4"
+              strokeWidth="4"
             />
             <g id="ApparatusOutline">
               <path
                 id="apparatus-lens"
                 d="M928 189C981.892 173.965 1011.11 166.035 1065 151"
                 stroke="#CCCCCC"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
               />
               <rect
                 id="CoverForLens"
@@ -308,22 +380,22 @@ export default function MaxwellApparatus({
                 id="apparatus-top"
                 d="M1 1.5H1023.12C1025.4 1.5 1027.4 3.04738 1027.96 5.25974L1085.52 230.061C1085.8 231.132 1085.15 232.222 1084.08 232.495L1040.97 243.498C1039.89 243.774 1039.24 244.882 1039.53 245.96L1051.5 290"
                 stroke="#CCCCCC"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
               />
               <path
                 id="apparatus-bottom"
                 d="M1 189H926.419C927.346 189 928.151 189.636 928.365 190.538L946.527 267.008C946.786 268.1 947.894 268.765 948.981 268.48L994.587 256.502C995.647 256.224 996.734 256.85 997.024 257.907L1009 301.5"
                 stroke="#CCCCCC"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
               />
               <path
                 id="divider-between-white-and-spectrum"
                 d="M1 34L960 34.0001"
                 stroke="#CCCCCC"
-                stroke-width="2"
-                stroke-linecap="round"
+                strokeWidth="2"
+                strokeLinecap="round"
               />
             </g>
             <g id="Lens">
