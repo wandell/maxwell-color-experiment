@@ -90,7 +90,7 @@ export default function MaxwellApparatus({
           width="1951"
           height="926"
           transform="translate(-379 -251)"
-          fill="#f1f1f1"
+          fill="#fbfbfb"
         />
         <g id="Apparatus" clipPath="url(#clip0_0_1)">
           <g id="Observer View">
