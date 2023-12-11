@@ -287,7 +287,7 @@ export default function MaxwellApparatus({
                       slit3Pos,
                       slit3Size
                     )[2]
-                  }L924 83.9998V82.5Z}`}
+                  }L924 83.9998V82.5Z`}
                   fill="#373737"
                 />
                 <path

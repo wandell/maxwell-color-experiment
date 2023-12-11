@@ -58,11 +58,11 @@ export default function Home() {
     const combinedY =
       (XYZ1[1] * s1Size) / 100 +
       (XYZ2[1] * s2Size) / 100 +
-      (XYZ3[0] * s3Size) / 100;
+      (XYZ3[1] * s3Size) / 100;
     const combinedZ =
       (XYZ1[2] * s1Size) / 100 +
       (XYZ2[2] * s2Size) / 100 +
-      (XYZ3[0] * s3Size) / 100;
+      (XYZ3[2] * s3Size) / 100;
 
     return [combinedX, combinedY, combinedZ];
   };
@@ -153,9 +153,6 @@ export default function Home() {
     return RGB;
   };
 
-  // const style = (rgb: number[]) => {
-  //   return `w-40 h-40 bg-[rgb(${rgb[0]},${rgb[1]},${rgb[2]})]`;
-  // };
   const style = (rgb: number[]) => {
     return {
       width: "10rem", // 40 pixels
