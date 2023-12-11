@@ -232,7 +232,25 @@ export default function MaxwellApparatus({
                 />
                 <path
                   id="shutter-4-slit"
-                  d="M8 188V150L18 149.316V188H8Z"
+                  d={`M8 188V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[5]
+                  }L18 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[5]
+                  }V188H8Z`}
                   fill="#CCCCCC"
                 />
               </g>
@@ -262,7 +280,43 @@ export default function MaxwellApparatus({
                 />
                 <path
                   id="shutter-3-slit"
-                  d="M8 140V102L18 101.809V139.418L8 140Z"
+                  d={`M8 140V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[3]
+                  }L18 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[3]
+                  }V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[4]
+                  }L8 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[4]
+                  }Z`}
                   fill="#CCCCCC"
                 />
               </g>
@@ -292,7 +346,43 @@ export default function MaxwellApparatus({
                 />
                 <path
                   id="shutter-2-slit"
-                  d="M8 96.0002V58L18 58.2589V95.8694L8 96.0002Z"
+                  d={`M8 96.0002V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[1]
+                  }L18 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[1]
+                  }V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[2]
+                  }L8 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[2]
+                  }Z`}
                   fill="#CCCCCC"
                 />
               </g>
@@ -314,7 +404,25 @@ export default function MaxwellApparatus({
                 />
                 <path
                   id="shutter-1-slit"
-                  d="M8 47.5V35H18V47.8633L8 47.5Z"
+                  d={`M8 47.5V35H18V${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[0]
+                  }L8 ${
+                    computeSlitPosition(
+                      slit1Pos,
+                      slit1Size,
+                      slit2Pos,
+                      slit2Size,
+                      slit3Pos,
+                      slit3Size
+                    )[0]
+                  }Z`}
                   fill="#CCCCCC"
                 />
               </g>
