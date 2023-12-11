@@ -1,8 +1,9 @@
-import { Inter, BioRhyme } from "next/font/google";
+import { Open_Sans, BioRhyme } from "next/font/google";
 
-export const inter = Inter({
+export const inter = Open_Sans({
   subsets: ["latin"],
   display: "swap",
+  style: ["normal", "italic"],
 });
 
 export const biorhyme = BioRhyme({
