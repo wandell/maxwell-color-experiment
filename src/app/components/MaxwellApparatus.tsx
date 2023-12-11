@@ -77,8 +77,8 @@ export default function MaxwellApparatus({
 
   return (
     <svg
-      width="1093"
-      height="424"
+      // width="1093"
+      // height="424"
       viewBox="0 0 1093 424"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

@@ -162,7 +162,7 @@ export default function Home() {
     };
   };
 
-  const observerColorCompute = (rgb: number[]) => {
+  const rgbToCSSStyle = (rgb: number[]) => {
     return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`; // Use redValue for the red color value
   };
 
@@ -176,7 +176,7 @@ export default function Home() {
           slit2Size={s2Size}
           slit3Pos={s3nm}
           slit3Size={s3Size}
-          observerColor={observerColorCompute(nmToRGBMixed(s1nm, s2nm, s3nm))}
+          observerColor={rgbToCSSStyle(nmToRGBMixed(s1nm, s2nm, s3nm))}
         />
         <div className="flex">
           <div style={style(nmToRGB(s1nm))}></div>
@@ -249,60 +249,176 @@ export default function Home() {
           </div>
         </div>
 
-        <b>Slit 1</b>
-        <div className="flex h-[150px] gap-[10px] align-center">
-          <Slider
-            step={5}
-            onChange={(e) => handleSliderChange(e, 1)}
-            min={400}
-            max={700}
-            defaultValue={defaultRed}
-            reverse={true}
-          />
-          <Slider
-            onChange={(e) => handleSliderChangeAmount(e, 1)}
-            min={0}
-            max={100}
-            vertical={true}
-            defaultValue={defaultSlitWidth}
-          />
-        </div>
-
-        <b>Slit 2</b>
-        <div className="flex h-[150px] gap-[10px] align-center">
-          <Slider
-            step={5}
-            onChange={(e) => handleSliderChange(e, 2)}
-            min={400}
-            max={700}
-            defaultValue={defaultGreen}
-            reverse={true}
-          />
-          <Slider
-            onChange={(e) => handleSliderChangeAmount(e, 2)}
-            min={0}
-            max={100}
-            vertical={true}
-            defaultValue={defaultSlitWidth}
-          />
-        </div>
-        <b>Slit 3</b>
-        <div className="flex h-[150px] gap-[10px] align-center">
-          <Slider
-            step={5}
-            onChange={(e) => handleSliderChange(e, 3)}
-            min={400}
-            max={700}
-            defaultValue={defaultBlue}
-            reverse={true}
-          />
-          <Slider
-            onChange={(e) => handleSliderChangeAmount(e, 3)}
-            min={0}
-            max={100}
-            vertical={true}
-            defaultValue={defaultSlitWidth}
-          />
+        {/* Slit Controller */}
+        <div className="flex flex-col gap-8 border-2 rounded-lg p-10 border-[#CDCDCD]">
+          <div className="gap-16">
+            {/* <b>Slit 1</b> */}
+            <div className="flex gap-y-16 gap-6 align-center">
+              <Slider
+                step={5}
+                onChange={(e) => handleSliderChange(e, 1)}
+                min={400}
+                max={700}
+                defaultValue={defaultRed}
+                reverse={true}
+                trackStyle={{
+                  backgroundColor: "rgb(255 255 255 / 0%);",
+                  height: 5,
+                }}
+                // railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s1nm)),
+                  borderWidth: 4,
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: "#FFF",
+                }}
+                railStyle={{
+                  background:
+                    "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s1nm)),
+                }}
+              />
+              <Slider
+                onChange={(e) => handleSliderChangeAmount(e, 1)}
+                min={0}
+                max={100}
+                // vertical={true}
+                defaultValue={defaultSlitWidth}
+                trackStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s1nm)),
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s1nm)),
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s1nm)),
+                }}
+              />
+            </div>
+          </div>
+          <div className="gap-16">
+            {/* <b>Slit 2</b> */}
+            <div className="flex gap-6 align-center">
+              <Slider
+                step={5}
+                onChange={(e) => handleSliderChange(e, 2)}
+                min={400}
+                max={700}
+                defaultValue={defaultGreen}
+                reverse={true}
+                trackStyle={{
+                  backgroundColor: "rgb(255 255 255 / 0%);",
+                  height: 5,
+                }}
+                // railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s2nm)),
+                  borderWidth: 4,
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: "#FFF",
+                }}
+                railStyle={{
+                  background:
+                    "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s2nm)),
+                }}
+              />
+              <Slider
+                onChange={(e) => handleSliderChangeAmount(e, 2)}
+                min={0}
+                max={100}
+                // vertical={true}
+                defaultValue={defaultSlitWidth}
+                trackStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s2nm)),
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s2nm)),
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s2nm)),
+                }}
+              />
+            </div>
+          </div>
+          <div className="gap-16">
+            {/* <b>Slit 3</b> */}
+            <div className="flex gap-6 align-center">
+              <Slider
+                step={5}
+                onChange={(e) => handleSliderChange(e, 3)}
+                min={400}
+                max={700}
+                defaultValue={defaultBlue}
+                reverse={true}
+                trackStyle={{
+                  backgroundColor: "rgb(255 255 255 / 0%);",
+                  height: 5,
+                }}
+                // railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s3nm)),
+                  borderWidth: 4,
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: "#FFF",
+                }}
+                railStyle={{
+                  background:
+                    "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s3nm)),
+                }}
+              />
+              <Slider
+                onChange={(e) => handleSliderChangeAmount(e, 3)}
+                min={0}
+                max={100}
+                // vertical={true}
+                defaultValue={defaultSlitWidth}
+                trackStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                railStyle={{ backgroundColor: "#CDCDCD", height: 5 }}
+                handleStyle={{
+                  borderColor: rgbToCSSStyle(nmToRGB(s3nm)),
+                  height: 35,
+                  width: 35,
+                  marginLeft: 0,
+                  marginTop: -15,
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s3nm)),
+                }}
+                activeDotStyle={{
+                  boxShadow: "none",
+                  backgroundColor: rgbToCSSStyle(nmToRGB(s3nm)),
+                }}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </main>
