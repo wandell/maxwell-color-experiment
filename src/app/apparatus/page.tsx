@@ -109,7 +109,7 @@ export default function Home() {
   const nmToRGB = (value: number) => {
     const XYZValues = nmToXYZTable[value];
     const RGB = xyzToRgb(XYZValues[0], XYZValues[1], XYZValues[2]);
-    console.log(RGB);
+    // console.log(RGB);
     return RGB;
   };
 
@@ -120,7 +120,7 @@ export default function Home() {
     const combinedXYZ = combineXYZ(XYZValues1, XYZValues2);
 
     const RGB = xyzToRgb(combinedXYZ[0], combinedXYZ[1], combinedXYZ[2]);
-    console.log(RGB);
+    // console.log(RGB);
     return RGB;
   };
 
@@ -143,12 +143,12 @@ export default function Home() {
     <main className="min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
         <MaxwellApparatus
-          slit1Pos={0}
-          slit1Size={0}
+          slit1Pos={s1nm}
+          slit1Size={s1Size}
           slit2Pos={0}
-          slit2Size={0}
+          slit2Size={10}
           slit3Pos={0}
-          slit3Size={0}
+          slit3Size={10}
           observerColor={observerColorCompute(nmToRGB2(s1nm, s2nm))}
         />
         <div className="flex">
@@ -175,8 +175,8 @@ export default function Home() {
           <Slider
             step={5}
             onChange={(e) => handleSliderChange(e, 1)}
-            min={380}
-            max={780}
+            min={400}
+            max={700}
           />
           <Slider
             onChange={(e) => handleSliderChangeAmount(e, 1)}
@@ -191,8 +191,8 @@ export default function Home() {
           <Slider
             step={5}
             onChange={(e) => handleSliderChange(e, 2)}
-            min={380}
-            max={780}
+            min={400}
+            max={700}
           />
           <Slider
             onChange={(e) => handleSliderChangeAmount(e, 2)}

@@ -15,6 +15,44 @@ export default function MaxwellApparatus({
   slit3Size: number;
   observerColor: string;
 }) {
+  // Start and end height values for the spectrum positions
+  const spectrum1leftStart = 42;
+  const spectrum1leftEnd = 182;
+  const spectrum1rightStart = 80.3212;
+  const spectrum1rightEnd = 90.5;
+
+  // M8 *182* V*42* L924 80.3212V90.5L8 *182*Z
+
+  // Heights of the spectrums in order to calculate the shutter positions to create the slit effects
+  const spectrum1left = spectrum1leftEnd - spectrum1leftStart;
+  const spectrum1right = spectrum1rightEnd - spectrum1rightStart;
+  const spectrum2left = 10;
+  const spectrum2right = 7.79;
+
+  // Which wavelengths the chart will cover
+  const startNm = 400;
+  const endNm = 700;
+
+  const computeSlitPosition = (slit1Pos: number, slit1Size: number) => {
+    // Calculate the center y position
+    // Calculate the ratio
+    const nmRatio = (endNm - slit1Pos) / (endNm - startNm);
+    const nmCenter = -(
+      (spectrum1leftStart - spectrum1leftEnd) * nmRatio -
+      spectrum1leftStart
+    );
+
+    // Compute the width based on the slit size
+    // Each slit position should be adjusted by +- widthRatio / 2 to keep the center aligned
+    const widthRatio = 1 - (100 - slit1Size) / (100 - 0);
+    console.log(widthRatio);
+    const width = -((spectrum1leftStart - spectrum1leftEnd) * widthRatio);
+
+    // console.log([nmCenter - width, nmCenter + width]);
+    // First position for left-spectrum, left-edge
+    return [nmCenter - width, nmCenter + width];
+  };
+
   return (
     <svg
       width="1093"
@@ -155,7 +193,7 @@ export default function MaxwellApparatus({
                 d="M8 182V42L924 80.3212V90.5L8 182Z"
                 fill="url(#pattern1)"
               />
-              <g id="shutter-4-group_2">
+              {/* <g id="shutter-4-group_2">
                 <path
                   id="shutter-4_2"
                   d="M924 87.5L8 150V182L924 90.5V87.5Z"
@@ -178,11 +216,13 @@ export default function MaxwellApparatus({
                   d="M8 140V102L18 101.809V139.418L8 140Z"
                   fill="#CCCCCC"
                 />
-              </g>
+              </g> */}
               <g id="shutter-2-group_2">
                 <path
                   id="shutter-2_2"
-                  d="M924 82.5L8 58V96L924 83.9998V82.5Z"
+                  d={`M924 82.5L8 ${
+                    computeSlitPosition(slit1Pos, slit1Size)[1]
+                  }V96L924 83.9998V82.5Z}`}
                   fill="#373737"
                 />
                 <path
@@ -194,7 +234,9 @@ export default function MaxwellApparatus({
               <g id="shutter-1-group_2">
                 <path
                   id="shutter-1_2"
-                  d="M8.5 47.018V42.5212L923.5 80.4797V80.4814L8.5 47.018Z"
+                  d={`M8.5 42V${
+                    computeSlitPosition(slit1Pos, slit1Size)[0]
+                  }L923.5 80.4797V80.4814L8.5 42Z`}
                   fill="#373737"
                   stroke="#373737"
                 />
