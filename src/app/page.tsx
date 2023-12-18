@@ -59,7 +59,7 @@ export default function Home() {
         </p>
         <p className="max-w-prose leading-loose mb-4">
           <i>
-            <b>Last Updated:</b> 12:38 Monday, December 18, 2023 (PST)
+            <b>Last Updated:</b> 15:30 Monday, December 18, 2023 (PST)
           </i>
         </p>
 
