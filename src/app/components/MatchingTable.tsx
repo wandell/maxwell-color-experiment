@@ -19,7 +19,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
     <table className="table-fixed border-collapse border-gray-200 border-spacing-0">
       <thead>
         <tr className="text-left">
-          <th className="w-[250px]"> </th>
+          {/* <th className="w-[250px]"> </th> */}
           <th className="w-[150px]">Slit 1</th>
           <th className="w-[30px]"></th>
           <th className="w-[150px]">Slit 2</th>
@@ -32,7 +32,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
       <tbody>
         {colors.map((colorRow, index) => (
           <tr key={index} className="pt-3 border-y border-gray-200">
-            <td>
+            {/* <td>
               <div className="flex gap-2 pt-2 pb-2">
                 <ColorBox
                   color={`rgb(${colorRow.base.rgbColor.join(",")})`}
@@ -40,7 +40,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
                 />
                 {colorRow.base.name}
               </div>
-            </td>
+            </td> */}
             {/* Render the color bar for slit 1 with width based on its weight */}
             <td>
               <div className="flex gap-2 pt-2 pb-2">
@@ -98,7 +98,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             {/* Target Cell */}
             <td>
               <div className="flex gap-2 pt-2 pb-2">
-                <ColorBox color={`rgb(255,255,255)`} weight={0} />
+                <ColorBox color={`rgb(255,255,255)`} weight={25} />
               </div>
             </td>
           </tr>

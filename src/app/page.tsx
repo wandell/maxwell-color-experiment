@@ -47,6 +47,22 @@ export default function Home() {
         <h1 className={`${biorhyme.className} text-4xl mb-4`}>
           Maxwell's Color Experiment Revisited
         </h1>
+        <hr className="m-4 solid" />
+
+        <p className="max-w-prose leading-loose">
+          <b>Note:</b> This is still a draft before publishing to public.
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          Koh will clean up all of the content before opening to the public.{" "}
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          <i>
+            <b>Last Updated:</b> 12:38 Monday, December 18, 2023 (PST)
+          </i>
+        </p>
+
+        <hr className="m-4 solid" />
+
         <p className="max-w-prose leading-loose mb-4">
           In the annals of scientific history, James Clerk Maxwell's
           contributions stand as monumental milestones, not just in the realm of
@@ -280,19 +296,19 @@ export default function Home() {
           <b style={{ color: rgbToCSSStyle(nmToRGB(445)) }}>Blue (445nm)</b>{" "}
           with{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(475)) }}>
-            Greenish-Blue (475nm)
+            Greenish-Blue (475nm){" "}
           </b>
-          Try matching the left side of the view to the right side using the
-          primaries{" "}
+          . Now, try matching the left side of the view to the right side using
+          the primaries{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Red (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (520nm)</b>,
+          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (520nm)</b>,{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(475)) }}>
             Greenish-Blue (475nm)
           </b>
-          . The target color (white) is still identical.
+          . Note that the target color (white) is still identical.
         </p>
         <p className="max-w-prose leading-loose mb-4">
-          Don't adjust the slit positions, only the slit weights.
+          Keep in mind to only adjust the slit positions, only the slit width.
         </p>
       </div>
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
@@ -341,8 +357,8 @@ export default function Home() {
           Since they are both equal white we can make the two equations equal
           each other and do algebra.
         </p>
-        <div className="max-w-6xl mt-4 mb-4">
-          <Image src="/math-3.png" alt="figure-1" width={4615} height={621} />
+        <div className="max-w-8xl mt-4 mb-4">
+          <Image src="/math-3.png" alt="figure-1" width={7372} height={1095} />
         </div>
         <p className="max-w-prose leading-loose mb-4">
           Maxwell rewrote all of the colors in terms of the 3 primaries.
@@ -363,6 +379,57 @@ export default function Home() {
           width={5180}
           height={2072}
         />
+      </div>
+
+      {/* Ending Notes */}
+      <div className="max-w-xl">
+        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>
+          Ending Notes
+        </h2>
+        <p className="max-w-prose leading-loose mb-4">
+          It's important to note that in the apparatus simulation that I've
+          created, there are limitations to the accuracy of the colors that you
+          see. Specifically, Maxwell did this experiment using colors that
+          cannot be represented in a computer screen (out of gamut).
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          The methodology I used to render the colors is to convert the
+          wavelengths to XYZ color space using the wavelength to XYZ table in
+          CIE's COLORIMETRY Report. In XYZ space, I weight and sum the colors
+          from the three slit positions. After that, the XYZ values are
+          converted into sRGB and gamma correction is applied. In this web
+          interaction, the RGB values are displayed. Any XYZ values that are out
+          of gamut are clipped.
+        </p>
+      </div>
+
+      {/* Credits Section */}
+      <div className="max-w-xl">
+        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>Credits</h2>
+        <p className="max-w-prose leading-loose mb-4">
+          Professor Bryan Wandwell for all of of our discussions and enthusism
+          around Maxwell's experiments, and guiding me through this project from
+          start to finish.
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          On the Theory of Compound Colours, and the Relations of the Colours of
+          the Spectrum, By James Clerk Maxwell (1860), First published in
+          Philosophical Transactions (1860)
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          Commentary by Qasim Zaidi - Department of Psychology Columbia
+          University New York. New York 10027
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          CIE COLORIMETRY Report - 3rd Edition - Table T.5. CIE 1964 standard
+          colorimetric observer
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          XYZ to sRGS Conversion formula from Wikipedia
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          ChatGPT for organizing my writing
+        </p>
       </div>
     </main>
   );
