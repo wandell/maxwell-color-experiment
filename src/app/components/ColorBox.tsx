@@ -27,7 +27,7 @@ export default function ColorBox({
         borderColor: "#CCCCCC",
         borderWidth: color == "rgb(255,255,255)" ? 1 : 0,
         height: 25,
-        width: weight == 0 ? 25 : weight,
+        width: weight,
         borderRadius: 4,
       }}
     ></div>

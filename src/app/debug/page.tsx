@@ -6,6 +6,7 @@ import "rc-slider/assets/index.css";
 import { useState } from "react";
 import conversionTable from "../helper/cie-conversion-table";
 import MaxwellApparatus from "../components/MaxwellApparatus";
+import MaxwellApparatusNew from "../components/MaxwellApparatusNew";
 
 // Function written by ChatGPT
 function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
