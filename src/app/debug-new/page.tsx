@@ -113,5 +113,5 @@ export default function Home() {
     };
   };
 
-  return <MaxwellApparatusWrapper />;
+  return <MaxwellApparatusWrapper p1={650} p2={550} p3={460} />;
 }
