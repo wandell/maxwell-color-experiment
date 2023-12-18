@@ -4,15 +4,23 @@ import Image from "next/image";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
-import conversionTable from "../cie-conversion-table";
+import conversionTable from "../helper/cie-conversion-table";
 import MaxwellApparatus from "../components/MaxwellApparatus";
 
 // Function written by ChatGPT
 function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
-  // Scale the input XYZ values
-  const X = x / 0.9505;
-  const Y = y / 1.0;
-  const Z = z / 1.089;
+  // From Wikipedia:
+  // The CIE XYZ values must be scaled so that the Y of D65 ("white") is 1.0 (X = 0.9505, Y = 1.0000, Z = 1.0890).
+  // This is usually true but some color spaces use 100 or other values (such as in CIELAB, when using specified white points).
+
+  // const X = x / 0.9505;
+  // const Y = y / 1.0;
+  // const Z = z / 1.089;
+
+  // Without the scaling
+  const X = x;
+  const Y = y;
+  const Z = z;
 
   // Apply the linear transformation
   let R = X * 3.2406 + Y * -1.5372 + Z * -0.4986;
@@ -35,9 +43,9 @@ function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
 
 export default function Home() {
   const defaultSlitWidth = 30;
-  const defaultRed = 630;
-  const defaultGreen = 530;
-  const defaultBlue = 455;
+  const defaultRed = 620;
+  const defaultGreen = 520;
+  const defaultBlue = 445;
 
   // States of the position of slit 1, slit 2, etc.
   const [s1nm, sets1nm] = useState<number>(defaultRed);

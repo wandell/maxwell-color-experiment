@@ -4,7 +4,7 @@ import Image from "next/image";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useState } from "react";
-import conversionTable from "../../cie-conversion-table";
+import conversionTable from "../../helper/cie-conversion-table";
 
 // Function written by ChatGPT
 function xyzToRgb(x: number, y: number, z: number): [number, number, number] {
