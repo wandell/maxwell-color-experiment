@@ -50,6 +50,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
                 <ColorBox
                   color={`rgb(${colorRow.slit1.rgbColor.join(",")})`}
                   weight={colorRow.slit1.weight}
+                  border={false}
                 />
               </div>
             </td>
@@ -61,14 +62,18 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             </td>
             {/* Render the color bar for slit 2 with width based on its weight */}
             <td>
-              <div className="flex gap-2 pt-2 pb-2">
-                <div className="w-8">
-                  {colorRow.slit2.weight == 0 ? " " : colorRow.slit2.weight}
+              <div className="flex flex-col gap-1 pt-2 pb-2">
+                <div className="flex">
+                  <div className="w-8 mr-2">
+                    {colorRow.slit2.weight == 0 ? " " : colorRow.slit2.weight}
+                  </div>
+                  <ColorBox
+                    color={`rgb(${colorRow.slit2.rgbColor.join(",")})`}
+                    weight={colorRow.slit2.weight}
+                    border={false}
+                  />
                 </div>
-                <ColorBox
-                  color={`rgb(${colorRow.slit2.rgbColor.join(",")})`}
-                  weight={colorRow.slit2.weight}
-                />
+                {/* <div className="text-gray-400 text-sm">500 nm</div> */}
               </div>
             </td>
             {/* + Symbol */}
@@ -86,6 +91,7 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
                 <ColorBox
                   color={`rgb(${colorRow.slit3.rgbColor.join(",")})`}
                   weight={colorRow.slit3.weight}
+                  border={false}
                 />
               </div>
             </td>
@@ -98,7 +104,11 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             {/* Target Cell */}
             <td>
               <div className="flex gap-2 pt-2 pb-2">
-                <ColorBox color={`rgb(255,255,255)`} weight={25} />
+                <ColorBox
+                  color={`rgb(255,255,255)`}
+                  weight={25}
+                  border={true}
+                />
               </div>
             </td>
           </tr>

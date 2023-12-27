@@ -38,7 +38,11 @@ export default function ColorEquation({
             <td>
               <div className="flex gap-2 pt-2 pb-2 w-[140px]">
                 <div className="w-8 text-right">{p1weight}</div>
-                <ColorBox color={`rgb(${p1rgb.join(",")})`} weight={p1weight} />
+                <ColorBox
+                  color={`rgb(${p1rgb.join(",")})`}
+                  weight={p1weight}
+                  border={false}
+                />
               </div>
             </td>
             {/* + Symbol */}
@@ -51,7 +55,11 @@ export default function ColorEquation({
             <td>
               <div className="flex gap-2 pt-2 pb-2 w-[140px]">
                 <div className="w-8 text-right">{p2weight}</div>
-                <ColorBox color={`rgb(${p2rgb.join(",")})`} weight={p2weight} />
+                <ColorBox
+                  color={`rgb(${p2rgb.join(",")})`}
+                  weight={p2weight}
+                  border={false}
+                />
               </div>
             </td>
             {/* + Symbol */}
@@ -64,7 +72,11 @@ export default function ColorEquation({
             <td>
               <div className="flex gap-2 pt-2 pb-2 w-[140px]">
                 <div className="w-8 text-right">{p3weight}</div>
-                <ColorBox color={`rgb(${p3rgb.join(",")})`} weight={p3weight} />
+                <ColorBox
+                  color={`rgb(${p3rgb.join(",")})`}
+                  weight={p3weight}
+                  border={false}
+                />
               </div>
             </td>
             {/* = Symbol */}
@@ -76,7 +88,11 @@ export default function ColorEquation({
             {/* Target Cell */}
             <td>
               <div className="flex gap-2 pt-2 pb-2 mr-4 ml-4">
-                <ColorBox color={`rgb(${targetrgb.join(",")})`} weight={25} />
+                <ColorBox
+                  color={`rgb(${targetrgb.join(",")})`}
+                  weight={25}
+                  border={true}
+                />
               </div>
             </td>
           </tr>

@@ -14,9 +14,11 @@ const getMaxWeight = (colors: ColorRowData[]): number => {
 export default function ColorBox({
   color,
   weight,
+  border,
 }: {
   color: string;
   weight: number;
+  border: boolean;
 }) {
   //   const maxWeight = getMaxWeight(colors); // Get the max weight to scale the bars
 
@@ -25,7 +27,7 @@ export default function ColorBox({
       style={{
         backgroundColor: color,
         borderColor: "#CCCCCC",
-        borderWidth: color == "rgb(255,255,255)" ? 1 : 0,
+        borderWidth: color == "rgb(255,255,255)" || border == true ? 1 : 0,
         height: 25,
         width: weight,
         borderRadius: 4,
