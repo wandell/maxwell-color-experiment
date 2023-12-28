@@ -642,7 +642,7 @@ export default function MaxwellApparatusNew({
       </div>
 
       {/* Math part */}
-      <div className="relative mt-5 w-[530px] m-auto xl:m-0 xl:top-[-215px] xl:left-[104px]">
+      <div className="relative mt-5 w-[530px] m-auto xl:m-0 xl:top-[-200px] xl:left-[280px]">
         {" "}
         <ColorEquation
           p1rgb={nmToRGB(slit1Pos)}

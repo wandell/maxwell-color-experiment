@@ -12,16 +12,19 @@ import {
   nmToRGBMixed,
   rgbToCSSStyle,
 } from "../helper/color-conversion";
+import LockIcon from "./icons/LockIcon";
 
 // Take 3 primaries to setup the tool
 export default function MaxwellApparatusWrapper({
   p1,
   p2,
   p3,
+  isLocked,
 }: {
   p1: number;
   p2: number;
   p3: number;
+  isLocked: boolean;
 }) {
   const defaultSlitWidth = 30;
   const defaultRed = p1;
@@ -134,13 +137,15 @@ export default function MaxwellApparatusWrapper({
       />
 
       {/* Slit Controller */}
-      <div className="relative xl:top-[-205px] w-[530px] xl:left-[104px] xl:m-0 m-auto mt-4">
+      <div className="relative xl:top-[-190px] w-[530px] xl:left-[280px] xl:m-0 m-auto mt-4">
         <div className="flex flex-col gap-8 border-2 rounded-lg p-7 border-[#CDCDCD]">
           <div className="gap-16">
             {/* <b>Slit 1</b> */}
-            <div className="flex gap-y-16 gap-6 align-center">
+            <div className="flex gap-y-16 gap-6 align-center items-center">
+              {isLocked ? <LockIcon /> : <div></div>}
               <Slider
                 step={5}
+                disabled={isLocked ? true : false}
                 onChange={(e) => handleSlitPositionChange(e, 1)}
                 min={400}
                 max={700}
@@ -159,10 +164,12 @@ export default function MaxwellApparatusWrapper({
                   marginLeft: 0,
                   marginTop: -10,
                   backgroundColor: "#FFF",
+                  opacity: isLocked ? 0.4 : 1,
                 }}
                 railStyle={{
                   background:
                     "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                  opacity: isLocked ? 0.2 : 1,
                 }}
                 activeDotStyle={{
                   boxShadow: "none",
@@ -194,9 +201,12 @@ export default function MaxwellApparatusWrapper({
           </div>
           <div className="gap-16">
             {/* <b>Slit 2</b> */}
-            <div className="flex gap-6 align-center">
+            <div className="flex gap-6 align-center items-center">
+              {isLocked ? <LockIcon /> : <div></div>}
+
               <Slider
                 step={5}
+                disabled={isLocked ? true : false}
                 onChange={(e) => handleSlitPositionChange(e, 2)}
                 min={400}
                 max={700}
@@ -214,11 +224,12 @@ export default function MaxwellApparatusWrapper({
                   width: 25,
                   marginLeft: 0,
                   marginTop: -10,
-                  backgroundColor: "#FFF",
+                  opacity: isLocked ? 0.4 : 1,
                 }}
                 railStyle={{
                   background:
                     "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                  opacity: isLocked ? 0.2 : 1,
                 }}
                 activeDotStyle={{
                   boxShadow: "none",
@@ -250,9 +261,11 @@ export default function MaxwellApparatusWrapper({
           </div>
           <div className="gap-16">
             {/* <b>Slit 3</b> */}
-            <div className="flex gap-6 align-center">
+            <div className="flex gap-6 align-center items-center">
+              {isLocked ? <LockIcon /> : <div></div>}
               <Slider
                 step={5}
+                disabled={isLocked ? true : false}
                 onChange={(e) => handleSlitPositionChange(e, 3)}
                 min={400}
                 max={700}
@@ -271,10 +284,12 @@ export default function MaxwellApparatusWrapper({
                   marginLeft: 0,
                   marginTop: -10,
                   backgroundColor: "#FFF",
+                  opacity: isLocked ? 0.4 : 1,
                 }}
                 railStyle={{
                   background:
                     "linear-gradient(270deg, #8000FF -0.25%, #00F 9.8%, #0080FF 19.85%, #0FF 29.9%, #00FF80 39.95%, #0F0 50%, #80FF00 60.05%, #FF0 70.1%, #FF8000 80.15%, #F00 90.2%, #800000 100.25%)",
+                  opacity: isLocked ? 0.2 : 1,
                 }}
                 activeDotStyle={{
                   boxShadow: "none",

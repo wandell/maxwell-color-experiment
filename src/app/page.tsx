@@ -34,8 +34,8 @@ export default function Home() {
 
   // This is just for internal calc, not used in production code
   // const myExperimentNm = [
-  //   655, 620, 595, 575, 555, 535, 520, 500, 490, 475, 465, 455, 445, 440, 430,
-  //   425,
+  //   650, 620, 595, 570, 550, 535, 515, 495, 490, 475, 465, 455, 445, 435, 430,
+  //   420,
   // ];
 
   // myExperimentNm.forEach((nm) => console.log(nmToRGB(nm)));
@@ -277,7 +277,7 @@ export default function Home() {
       </div>
 
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={440} />
+        <MaxwellApparatusWrapper p1={620} p2={520} p3={440} isLocked={false} />
       </div>
 
       {/* Trial Experiment 1 */}
@@ -308,7 +308,7 @@ export default function Home() {
         </p>
       </div>
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={445} />
+        <MaxwellApparatusWrapper p1={620} p2={520} p3={445} isLocked={true} />
       </div>
 
       {/* Trial Experiment 2 */}
@@ -345,7 +345,7 @@ export default function Home() {
         </p>
       </div>
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={475} />
+        <MaxwellApparatusWrapper p1={620} p2={520} p3={475} isLocked={true} />
       </div>
 
       <div className="max-w-xl">

@@ -26,3 +26,7 @@ body {
     )
     rgb(var(--background-start-rgb)); */
 }
+
+.rc-slider-disabled {
+  background-color: #fbfbfb !important;
+}
