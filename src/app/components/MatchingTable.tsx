@@ -46,7 +46,7 @@ export default function MatchingTable({
                 <div className="text-gray-400 text-sm font-normal">515nm</div>
               </div>
             ) : (
-              `Slit 1`
+              `Slit 2`
             )}
           </th>
           <th className="w-[30px]"></th>
@@ -58,7 +58,7 @@ export default function MatchingTable({
                 <div className="text-gray-400 text-sm font-normal">445nm</div>
               </div>
             ) : (
-              `Slit 1`
+              `Slit 3`
             )}
           </th>
           <th className="w-[30px]"></th>

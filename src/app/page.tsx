@@ -394,20 +394,66 @@ export default function Home() {
         </p>
 
         <div className="max-w-6xl mt-4 mb-4">
-          <Image src="/math-1.png" alt="figure-1" width={4661} height={286} />
+          <Image
+            src="/Equation-1.png"
+            alt="figure-1"
+            width={3100}
+            height={125}
+          />
         </div>
 
         <p className="max-w-prose leading-loose mb-4">With red he got:</p>
         <div className="max-w-6xl mt-4 mb-4">
-          <Image src="/math-2.png" alt="figure-1" width={4661} height={294} />
+          <Image
+            src="/Equation-2.png"
+            alt="figure-1"
+            width={3100}
+            height={125}
+          />
         </div>
-
-        <p className="max-w-prose leading-loose mb-4">
+        <p className="max-w-prose leading-loose mt-4 mb-2">
           Since they are both equal white, we can make the two equations equal
           and do some algebra.
         </p>
+      </div>
+
+      <div className="max-w-3xl mt-4 mb-4">
         <div className="max-w-8xl mt-4 mb-4">
-          <Image src="/math-3.png" alt="figure-1" width={7372} height={1095} />
+          <Image
+            src="/Equation-3.png"
+            alt="figure-1"
+            width={4325}
+            height={125}
+          />
+        </div>
+        <div className="max-w-8xl mt-4 mb-4">
+          <Image
+            src="/Equation-4.png"
+            alt="figure-1"
+            width={4325}
+            height={125}
+          />
+        </div>
+        <div className="max-w-8xl mt-4 mb-4">
+          <Image
+            src="/Equation-5.png"
+            alt="figure-1"
+            width={4325}
+            height={125}
+          />
+        </div>
+      </div>
+      <div className="max-w-xl">
+        <p className="max-w-prose leading-loose mb-4">
+          Maxwell normalized so the variable primary is normalized to 1.
+        </p>
+        <div className="max-w-sm mt-4 mb-4">
+          <Image
+            src="/Equation-6.png"
+            alt="figure-1"
+            width={1850}
+            height={125}
+          />
         </div>
         <p className="max-w-prose leading-loose mb-4">
           Maxwell rewrote all of the colors in terms of the three consistent
