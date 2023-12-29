@@ -266,7 +266,7 @@ export default function Home() {
         <p className="max-w-prose leading-loose mb-4">
           Each round will have three primaries. For now, our tool is set at{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Scarlet (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}> Green (515nm)</b>,
+          <b style={{ color: rgbToCSSStyle(nmToRGB(515)) }}> Green (515nm)</b>,
           and{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(445)) }}> Blue (445nm)</b>.
         </p>
@@ -300,7 +300,7 @@ export default function Home() {
           First, try matching the left side of the view to the right side using
           the primaries{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Red (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (515nm)</b>,{" "}
+          <b style={{ color: rgbToCSSStyle(nmToRGB(515)) }}>Green (515nm)</b>,{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(445)) }}>Blue (445nm)</b>.{" "}
         </p>
         <p className="max-w-prose leading-loose mb-4">
@@ -333,7 +333,7 @@ export default function Home() {
           Once again, try matching the left side of the view to the right side
           using the primaries{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Red (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (515nm)</b>,
+          <b style={{ color: rgbToCSSStyle(nmToRGB(515)) }}>Green (515nm)</b>,
           and{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(475)) }}>
             Greenish-Blue (475nm)
