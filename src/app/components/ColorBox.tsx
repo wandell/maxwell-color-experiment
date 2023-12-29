@@ -22,6 +22,10 @@ export default function ColorBox({
 }) {
   //   const maxWeight = getMaxWeight(colors); // Get the max weight to scale the bars
 
+  // This is a value for scaling to
+  const maxWidth = 64;
+  const scaleFactor = maxWidth / 100;
+
   return (
     <div
       style={{
@@ -29,7 +33,7 @@ export default function ColorBox({
         borderColor: "#CCCCCC",
         borderWidth: color == "rgb(255,255,255)" || border == true ? 1 : 0,
         height: 25,
-        width: weight,
+        width: weight * scaleFactor,
         borderRadius: 4,
       }}
     ></div>

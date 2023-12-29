@@ -44,8 +44,8 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             {/* Render the color bar for slit 1 with width based on its weight */}
             <td>
               <div className="flex gap-2 pt-2 pb-2">
-                <div className="w-8">
-                  {colorRow.slit1.weight == 0 ? " " : colorRow.slit1.weight}
+                <div className="w-12 text-xs">
+                  {colorRow.slit1.weight == 0 ? " " : colorRow.slit1.nm} nm
                 </div>
                 <ColorBox
                   color={`rgb(${colorRow.slit1.rgbColor.join(",")})`}
@@ -64,8 +64,8 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             <td>
               <div className="flex flex-col gap-1 pt-2 pb-2">
                 <div className="flex">
-                  <div className="w-8 mr-2">
-                    {colorRow.slit2.weight == 0 ? " " : colorRow.slit2.weight}
+                  <div className="w-12 mr-2 text-xs">
+                    {colorRow.slit2.weight == 0 ? " " : colorRow.slit2.nm} nm
                   </div>
                   <ColorBox
                     color={`rgb(${colorRow.slit2.rgbColor.join(",")})`}
@@ -85,8 +85,8 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             {/* Render the color bar for slit 3 with width based on its weight */}
             <td>
               <div className="flex gap-2 pt-2 pb-2">
-                <div className="w-8">
-                  {colorRow.slit3.weight == 0 ? " " : colorRow.slit3.weight}
+                <div className="w-12 text-xs">
+                  {colorRow.slit3.weight == 0 ? " " : colorRow.slit3.nm} nm
                 </div>
                 <ColorBox
                   color={`rgb(${colorRow.slit3.rgbColor.join(",")})`}

@@ -104,7 +104,7 @@ export default function MaxwellApparatusNew({
                 top: computeTextPosition(slit1Pos),
               }}
             >
-              <p className="whitespace-nowrap">{`${slit1Pos} nm`}</p>
+              <p className="whitespace-nowrap">{`${slit1Pos}nm`}</p>
               <div
                 className=""
                 style={{
@@ -121,7 +121,7 @@ export default function MaxwellApparatusNew({
                 top: computeTextPosition(slit2Pos),
               }}
             >
-              <p className="whitespace-nowrap">{`${slit2Pos} nm`}</p>
+              <p className="whitespace-nowrap">{`${slit2Pos}nm`}</p>
               <div
                 className=""
                 style={{
@@ -138,7 +138,7 @@ export default function MaxwellApparatusNew({
                 top: computeTextPosition(slit3Pos),
               }}
             >
-              <p className="whitespace-nowrap">{`${slit3Pos} nm`}</p>
+              <p className="whitespace-nowrap">{`${slit3Pos}nm`}</p>
               <div
                 className=""
                 style={{
@@ -645,11 +645,11 @@ export default function MaxwellApparatusNew({
       <div className="relative mt-5 w-[530px] m-auto xl:m-0 xl:top-[-200px] xl:left-[280px]">
         {" "}
         <ColorEquation
-          p1rgb={nmToRGB(slit1Pos)}
+          p1nm={slit1Pos}
           p1weight={slit1Size}
-          p2rgb={nmToRGB(slit2Pos)}
+          p2nm={slit2Pos}
           p2weight={slit2Size}
-          p3rgb={nmToRGB(slit3Pos)}
+          p3nm={slit3Pos}
           p3weight={slit3Size}
           targetrgb={observerColor}
         />
