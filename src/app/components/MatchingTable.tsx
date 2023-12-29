@@ -1,3 +1,4 @@
+import { nmToRGB } from "../helper/color-conversion";
 import { ColorRowData } from "../interfaces/color-row-interface";
 import ColorBox from "./ColorBox";
 
@@ -12,7 +13,13 @@ const getMaxWeight = (colors: ColorRowData[]): number => {
   );
 };
 
-export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
+export default function MatchingTable({
+  colors,
+  isRexpressed,
+}: {
+  colors: ColorRowData[];
+  isRexpressed: boolean;
+}) {
   const maxWeight = getMaxWeight(colors); // Get the max weight to scale the bars
 
   return (
@@ -20,37 +27,73 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
       <thead>
         <tr className="text-left">
           {/* <th className="w-[250px]"> </th> */}
-          <th className="w-[150px]">Slit 1</th>
+          <th className="w-[150px]">
+            {isRexpressed ? (
+              <div>
+                <div>Primary 1</div>
+                <div className="text-gray-400 text-sm font-normal">620nm</div>
+              </div>
+            ) : (
+              `Slit 1`
+            )}
+          </th>
           <th className="w-[30px]"></th>
-          <th className="w-[150px]">Slit 2</th>
+          <th className="w-[150px]">
+            {" "}
+            {isRexpressed ? (
+              <div>
+                <div>Primary 2</div>
+                <div className="text-gray-400 text-sm font-normal">515nm</div>
+              </div>
+            ) : (
+              `Slit 1`
+            )}
+          </th>
           <th className="w-[30px]"></th>
-          <th className="w-[150px]">Slit 3</th>
+          <th className="w-[150px]">
+            {" "}
+            {isRexpressed ? (
+              <div>
+                <div>Primary 3</div>
+                <div className="text-gray-400 text-sm font-normal">445nm</div>
+              </div>
+            ) : (
+              `Slit 1`
+            )}
+          </th>
           <th className="w-[30px]"></th>
-          <th className="w-[50px]">Target</th>
+          <th className="w-[50px]">{isRexpressed ? `` : `Target`}</th>
         </tr>
       </thead>
       <tbody>
         {colors.map((colorRow, index) => (
           <tr key={index} className="pt-3 border-y border-gray-200">
-            {/* <td>
-              <div className="flex gap-2 pt-2 pb-2">
-                <ColorBox
-                  color={`rgb(${colorRow.base.rgbColor.join(",")})`}
-                  weight={0}
-                />
-                {colorRow.base.name}
-              </div>
-            </td> */}
             {/* Render the color bar for slit 1 with width based on its weight */}
             <td>
-              <div className="flex gap-2 pt-2 pb-2">
-                <div className="w-12 text-xs">
-                  {colorRow.slit1.weight == 0 ? " " : colorRow.slit1.nm} nm
+              <div className="flex gap-2 pt-1 pb-1 w-[120px] items-center">
+                <div className="flex-col">
+                  <div className="w-11 text-right text-sm">
+                    {colorRow.slit1.weight < 0
+                      ? `(${colorRow.slit1.weight})`
+                      : colorRow.slit1.weight}
+                  </div>
+                  {isRexpressed ? (
+                    <div></div>
+                  ) : colorRow.slit1.nm != 620 ? (
+                    <div className="w-11 text-right text-xs text-gray-600 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit1.nm}nm*
+                    </div>
+                  ) : (
+                    <div className="w-11 text-right text-xs text-gray-400 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit1.nm}nm
+                    </div>
+                  )}
                 </div>
                 <ColorBox
-                  color={`rgb(${colorRow.slit1.rgbColor.join(",")})`}
+                  color={`rgb(${nmToRGB(colorRow.slit1.nm).join(",")})`}
                   weight={colorRow.slit1.weight}
                   border={false}
+                  max={isRexpressed ? 5000 : 100}
                 />
               </div>
             </td>
@@ -62,18 +105,31 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             </td>
             {/* Render the color bar for slit 2 with width based on its weight */}
             <td>
-              <div className="flex flex-col gap-1 pt-2 pb-2">
-                <div className="flex">
-                  <div className="w-12 mr-2 text-xs">
-                    {colorRow.slit2.weight == 0 ? " " : colorRow.slit2.nm} nm
+              <div className="flex gap-2 pt-1 pb-1 w-[120px] items-center">
+                <div className="flex-col">
+                  <div className="w-11 text-right text-sm">
+                    {colorRow.slit2.weight < 0
+                      ? `(${colorRow.slit2.weight})`
+                      : colorRow.slit2.weight}
                   </div>
-                  <ColorBox
-                    color={`rgb(${colorRow.slit2.rgbColor.join(",")})`}
-                    weight={colorRow.slit2.weight}
-                    border={false}
-                  />
+                  {isRexpressed ? (
+                    <div></div>
+                  ) : colorRow.slit2.nm != 515 ? (
+                    <div className="w-11 text-right text-xs text-gray-600 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit2.nm}nm*
+                    </div>
+                  ) : (
+                    <div className="w-11 text-right text-xs text-gray-400 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit2.nm}nm
+                    </div>
+                  )}
                 </div>
-                {/* <div className="text-gray-400 text-sm">500 nm</div> */}
+                <ColorBox
+                  color={`rgb(${nmToRGB(colorRow.slit2.nm).join(",")})`}
+                  weight={colorRow.slit2.weight}
+                  border={false}
+                  max={isRexpressed ? 5000 : 100}
+                />
               </div>
             </td>
             {/* + Symbol */}
@@ -84,14 +140,30 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             </td>
             {/* Render the color bar for slit 3 with width based on its weight */}
             <td>
-              <div className="flex gap-2 pt-2 pb-2">
-                <div className="w-12 text-xs">
-                  {colorRow.slit3.weight == 0 ? " " : colorRow.slit3.nm} nm
+              <div className="flex gap-2 pt-1 pb-1 w-[120px] items-center">
+                <div className="flex-col">
+                  <div className="w-11 text-right text-sm">
+                    {colorRow.slit3.weight < 0
+                      ? `(${colorRow.slit3.weight})`
+                      : colorRow.slit3.weight}
+                  </div>
+                  {isRexpressed ? (
+                    <div></div>
+                  ) : colorRow.slit3.nm != 445 ? (
+                    <div className="w-11 text-right text-xs text-gray-600 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit3.nm}nm*
+                    </div>
+                  ) : (
+                    <div className="w-11 text-right text-xs text-gray-400 whitespace-nowrap mt-[-3px]">
+                      {colorRow.slit3.nm}nm
+                    </div>
+                  )}
                 </div>
                 <ColorBox
-                  color={`rgb(${colorRow.slit3.rgbColor.join(",")})`}
+                  color={`rgb(${nmToRGB(colorRow.slit3.nm).join(",")})`}
                   weight={colorRow.slit3.weight}
                   border={false}
+                  max={isRexpressed ? 5000 : 100}
                 />
               </div>
             </td>
@@ -105,9 +177,14 @@ export default function MatchingTable({ colors }: { colors: ColorRowData[] }) {
             <td>
               <div className="flex gap-2 pt-2 pb-2">
                 <ColorBox
-                  color={`rgb(255,255,255)`}
+                  color={
+                    isRexpressed
+                      ? `rgb(${nmToRGB(colorRow.base.nm).join(",")})`
+                      : `rgb(255,255,255)`
+                  }
                   weight={25}
                   border={true}
+                  max={100}
                 />
               </div>
             </td>

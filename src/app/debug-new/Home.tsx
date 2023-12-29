@@ -10,7 +10,7 @@ const nmToXYZTable = conversionTable();
 export default function Home() {
   const defaultSlitWidth = 30;
   const defaultRed = 620;
-  const defaultGreen = 520;
+  const defaultGreen = 515;
   const defaultBlue = 445;
 
   // States of the position of slit 1, slit 2, etc.

@@ -29,118 +29,101 @@ import { ColorRowData } from "../interfaces/color-row-interface";
 const colorWhite: ColorData = {
   name: "Base Colors",
   nm: 650,
-  rgbColor: [255, 255, 255],
   weight: 0,
 };
 
 const color20: ColorData = {
   name: "Red",
   nm: 650,
-  rgbColor: [194, 0, 0],
   weight: 0,
 };
 
 const color24: ColorData = {
   name: "Scarlet",
   nm: 620,
-  rgbColor: [255, 0, 0],
   weight: 0,
 };
 
 const color28: ColorData = {
   name: "Orange",
   nm: 595,
-  rgbColor: [255, 138, 0],
   weight: 0,
 };
 
 const color32: ColorData = {
   name: "Yellow",
-  nm: 575,
-  rgbColor: [255, 230, 0],
+  nm: 570,
   weight: 0,
 };
 
 const color36: ColorData = {
   name: "Yellow-Green",
-  nm: 555,
-  rgbColor: [181, 255, 0],
+  nm: 550,
   weight: 0,
 };
 
 const color40: ColorData = {
   name: "Green",
   nm: 535,
-  rgbColor: [0, 255, 0],
   weight: 0,
 };
 
 const color44: ColorData = {
   name: "Green",
-  nm: 520,
-  rgbColor: [0, 255, 0],
+  nm: 515,
   weight: 0,
 };
 const color48: ColorData = {
   name: "Bluish Green",
-  nm: 500,
-  rgbColor: [0, 240, 104],
+  nm: 495,
   weight: 0,
 };
 
 const color52: ColorData = {
   name: "Blue-green",
   nm: 490,
-  rgbColor: [0, 209, 164],
   weight: 0,
 };
 
 const color56: ColorData = {
   name: "Greenish blue",
   nm: 475,
-  rgbColor: [0, 155, 255],
   weight: 0,
 };
 
 const color60: ColorData = {
   name: "Blue",
   nm: 465,
-  rgbColor: [0, 91, 255],
   weight: 0,
 };
 
 const color64: ColorData = {
   name: "Blue",
   nm: 455,
-  rgbColor: [1, 0, 255],
   weight: 0,
 };
 
 const color68: ColorData = {
   name: "Blue",
   nm: 445,
-  rgbColor: [100, 0, 255],
   weight: 0,
 };
 
 const color72: ColorData = {
   name: "Indigo",
   nm: 440,
-  rgbColor: [114, 0, 255],
   weight: 0,
 };
 
 const color76: ColorData = {
   name: "Indigo",
-  nm: 430,
-  rgbColor: [119, 0, 255],
+  nm: 440,
   weight: 0,
 };
 
 const color80: ColorData = {
   name: "Indigo",
-  nm: 425,
-  rgbColor: [116, 0, 255],
+  nm: 420,
   weight: 0,
 };
 

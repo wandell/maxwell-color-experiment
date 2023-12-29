@@ -15,15 +15,17 @@ export default function ColorBox({
   color,
   weight,
   border,
+  max,
 }: {
   color: string;
   weight: number;
   border: boolean;
+  max: number;
 }) {
   //   const maxWeight = getMaxWeight(colors); // Get the max weight to scale the bars
 
   // This is a value for scaling to
-  const maxWidth = 64;
+  const maxWidth = max;
   const scaleFactor = maxWidth / 100;
 
   return (

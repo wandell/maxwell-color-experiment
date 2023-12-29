@@ -15,11 +15,12 @@ import experimentColors from "./helper/experiment-colors";
 import experimentColorsMaxwellResults from "./helper/experiment-colors-maxwell-results";
 import MaxwellApparatusWrapper from "./components/MaxwellApparatusWrapper";
 import { nmToRGB } from "./helper/color-conversion";
+import experimentColorsMaxwellResultsReexpressed from "./helper/experiment-colors-maxwell-results-reexpressed";
 
 export default function Home() {
   const defaultSlitWidth = 30;
   const defaultRed = 620;
-  const defaultGreen = 520;
+  const defaultGreen = 515;
   const defaultBlue = 445;
 
   const nmToXYZTable = conversionTable();
@@ -30,6 +31,10 @@ export default function Home() {
 
   const getColors = () => {
     return experimentColorsMaxwellResults();
+  };
+
+  const getReExpressedColors = () => {
+    return experimentColorsMaxwellResultsReexpressed();
   };
 
   // This is just for internal calc, not used in production code
@@ -262,7 +267,7 @@ export default function Home() {
         <p className="max-w-prose leading-loose mb-4">
           Each round will have three primaries. For now, our tool is set at{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Scarlet (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}> Green (520nm)</b>,
+          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}> Green (515nm)</b>,
           and{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(445)) }}> Blue (445nm)</b>.
         </p>
@@ -277,7 +282,7 @@ export default function Home() {
       </div>
 
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={440} isLocked={false} />
+        <MaxwellApparatusWrapper p1={620} p2={515} p3={440} isLocked={false} />
       </div>
 
       {/* Trial Experiment 1 */}
@@ -296,7 +301,7 @@ export default function Home() {
           First, try matching the left side of the view to the right side using
           the primaries{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Red (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (520nm)</b>,{" "}
+          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (515nm)</b>,{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(445)) }}>Blue (445nm)</b>.{" "}
         </p>
         <p className="max-w-prose leading-loose mb-4">
@@ -308,7 +313,7 @@ export default function Home() {
         </p>
       </div>
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={445} isLocked={true} />
+        <MaxwellApparatusWrapper p1={620} p2={515} p3={445} isLocked={true} />
       </div>
 
       {/* Trial Experiment 2 */}
@@ -329,7 +334,7 @@ export default function Home() {
           Once again, try matching the left side of the view to the right side
           using the primaries{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(620)) }}>Red (620nm)</b>,{" "}
-          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (520nm)</b>,
+          <b style={{ color: rgbToCSSStyle(nmToRGB(580)) }}>Green (515nm)</b>,
           and{" "}
           <b style={{ color: rgbToCSSStyle(nmToRGB(475)) }}>
             Greenish-Blue (475nm)
@@ -345,7 +350,7 @@ export default function Home() {
         </p>
       </div>
       <div className="z-10 mt-10 max-w-6xl w-full items-center justify-between font-mono text-sm">
-        <MaxwellApparatusWrapper p1={620} p2={520} p3={475} isLocked={true} />
+        <MaxwellApparatusWrapper p1={620} p2={515} p3={475} isLocked={true} />
       </div>
 
       <div className="max-w-xl">
@@ -378,7 +383,7 @@ export default function Home() {
           times. In each round, he changed one of the primaries.
         </p>
         <div className="max-w-xl mb-4">
-          <MatchingTable colors={getColors()} />
+          <MatchingTable colors={getColors()} isRexpressed={false} />
         </div>
         <p className="max-w-prose leading-loose mb-4">
           Maxwell then reexpressed each of these colors in terms of the 3 base
@@ -409,6 +414,9 @@ export default function Home() {
           Maxwell rewrote all of the colors in terms of the three consistent
           primaries.
         </p>
+        <div className="max-w-xl mb-4">
+          <MatchingTable colors={getReExpressedColors()} isRexpressed={true} />
+        </div>
         <p className="max-w-prose leading-loose mb-4">
           He then charted his results onto a chart. They resemble the CIE Color
           Matching Functions with incredible accuracy!He then charted his

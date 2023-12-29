@@ -48,6 +48,7 @@ export default function ColorEquation({
                   color={`rgb(${nmToRGB(p1nm).join(",")})`}
                   weight={p1weight}
                   border={false}
+                  max={64}
                 />
               </div>
             </td>
@@ -70,6 +71,7 @@ export default function ColorEquation({
                   color={`rgb(${nmToRGB(p2nm).join(",")})`}
                   weight={p2weight}
                   border={false}
+                  max={64}
                 />
               </div>
             </td>
@@ -92,6 +94,7 @@ export default function ColorEquation({
                   color={`rgb(${nmToRGB(p3nm).join(",")})`}
                   weight={p3weight}
                   border={false}
+                  max={64}
                 />
               </div>
             </td>
@@ -109,6 +112,7 @@ export default function ColorEquation({
                   // Hack to get the target cell to render as a square
                   weight={(25 * 100) / 64}
                   border={true}
+                  max={64}
                 />
               </div>
             </td>
