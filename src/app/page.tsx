@@ -11,7 +11,6 @@ import { biorhyme, inter } from "./fonts";
 import MatchingTable from "./components/MatchingTable";
 import { ColorRowData } from "./interfaces/color-row-interface";
 import { ColorData } from "./interfaces/color-interface";
-import experimentColors from "./helper/experiment-colors";
 import experimentColorsMaxwellResults from "./helper/experiment-colors-maxwell-results";
 import MaxwellApparatusWrapper from "./components/MaxwellApparatusWrapper";
 import { nmToRGB } from "./helper/color-conversion";
@@ -64,7 +63,7 @@ export default function Home() {
         </p>
         <p className="max-w-prose leading-loose mb-4">
           <i>
-            <b>Last Updated:</b> 15:30 Monday, December 18, 2023 (PST)
+            <b>Last Updated:</b> 01:15 Friday, December 29, 2023 (PST)
           </i>
         </p>
 
