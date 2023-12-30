@@ -141,9 +141,16 @@ const round0: ColorRowData = {
 };
 
 // Changing the Blue Wavelength
-const round1: ColorRowData = {
+const round1a: ColorRowData = {
   base: color80,
   slit1: addWeights(color24, 0),
+  slit2: addWeights(color44, -0.03),
+  slit3: addWeights(color68, 0.48),
+};
+
+const round1: ColorRowData = {
+  base: color76,
+  slit1: addWeights(color24, 0.03),
   slit2: addWeights(color44, 0.02),
   slit3: addWeights(color68, 0.69),
 };
@@ -229,6 +236,7 @@ const round12: ColorRowData = {
 
 export default function experimentColorsMaxwellResultsReexpressed(): ColorRowData[] {
   return [
+    round1a,
     round1,
     round2,
     round3,

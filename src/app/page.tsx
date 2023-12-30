@@ -7,7 +7,7 @@ import "rc-slider/assets/index.css";
 import { useState } from "react";
 import conversionTable from "./helper/cie-conversion-table";
 import MaxwellApparatus from "./components/MaxwellApparatus";
-import { biorhyme, inter } from "./fonts";
+import { biorhyme, inter, rubikCube } from "./fonts";
 import MatchingTable from "./components/MatchingTable";
 import { ColorRowData } from "./interfaces/color-row-interface";
 import { ColorData } from "./interfaces/color-interface";
@@ -49,10 +49,10 @@ export default function Home() {
       className={`${inter.className} flex min-h-screen flex-col items-center p-24 pt-16`}
     >
       <div className="max-w-xl mt-10">
-        <h1 className={`${biorhyme.className} text-4xl mb-4`}>
+        <h1 className={`${rubikCube.className} text-5xl mb-4`}>
           Maxwell's Color Experiment Revisited
         </h1>
-        <hr className="m-4 solid" />
+        <hr className="m-4 solid mt-12" />
 
         <p className="max-w-prose leading-loose">
           <b>Note:</b> This is still a draft before being published for the
@@ -63,11 +63,11 @@ export default function Home() {
         </p>
         <p className="max-w-prose leading-loose mb-4">
           <i>
-            <b>Last Updated:</b> 01:15 Friday, December 29, 2023 (PST)
+            <b>Last Updated:</b> 02:30 Friday, December 29, 2023 (PST)
           </i>
         </p>
 
-        <hr className="m-4 solid" />
+        <hr className="m-4 solid mb-12" />
 
         <p className="max-w-prose leading-loose mb-4">
           In the annals of scientific history, James Clerk Maxwell's
@@ -85,7 +85,7 @@ export default function Home() {
         </p>
 
         {/* Introducing The Apparatus */}
-        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>
+        <h2 className={`${rubikCube.className} text-4xl mt-16 mb-4`}>
           Introducing the Apparatus
         </h2>
 
@@ -259,7 +259,7 @@ export default function Home() {
 
       {/* The Experiment */}
       <div className="max-w-xl">
-        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>
+        <h2 className={`${rubikCube.className} text-4xl mt-16 mb-4`}>
           The Experiment
         </h2>
 
@@ -295,7 +295,17 @@ export default function Home() {
           The observer should be unable to distinguish the color on the left and
           right sides they see through the viewing hole.{" "}
         </p>
+      </div>
+      <div className="max-w-xl mt-12 mb-12">
+        <Image
+          src="/matchexample.png"
+          alt="figure-1"
+          width={3210}
+          height={1320}
+        />
+      </div>
 
+      <div className="max-w-xl mt-4">
         <p className="max-w-prose leading-loose mb-4">
           First, try matching the left side of the view to the right side using
           the primaries{" "}
@@ -354,8 +364,11 @@ export default function Home() {
 
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
-          Two fascinating things just happened.
+          You just created the same color white with different sets of
+          primaries.
         </p>
+        <p className="max-w-prose leading-loose mb-4">[ Results 1]</p>
+        <p className="max-w-prose leading-loose mb-4">[ Results 2]</p>
         <ol className="list-decimal mb-4">
           <li>
             We created the same target white color with a different combination
@@ -374,7 +387,7 @@ export default function Home() {
       </div>
 
       <div className="max-w-xl">
-        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>
+        <h2 className={`${rubikCube.className} text-4xl mt-16 mb-4`}>
           The Results
         </h2>
         <p className="max-w-prose leading-loose mb-4">
@@ -417,7 +430,7 @@ export default function Home() {
         </p>
       </div>
 
-      <div className="max-w-3xl mt-4 mb-4">
+      <div className="max-w-4xl mt-4 mb-5 gap-7 flex-col">
         <div className="max-w-8xl mt-4 mb-4">
           <Image
             src="/Equation-3.png"
@@ -426,7 +439,7 @@ export default function Home() {
             height={125}
           />
         </div>
-        <div className="max-w-8xl mt-4 mb-4">
+        <div className="max-w-8xl mt-4 mb-5">
           <Image
             src="/Equation-4.png"
             alt="figure-1"
@@ -434,7 +447,7 @@ export default function Home() {
             height={125}
           />
         </div>
-        <div className="max-w-8xl mt-4 mb-4">
+        <div className="max-w-8xl mt-4 mb-5">
           <Image
             src="/Equation-5.png"
             alt="figure-1"
@@ -483,7 +496,7 @@ export default function Home() {
 
       {/* Ending Notes */}
       <div className="max-w-xl">
-        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>
+        <h2 className={`${rubikCube.className} text-4xl mt-16 mb-4`}>
           Ending Notes
         </h2>
         <p className="max-w-prose leading-loose mb-4">
@@ -505,7 +518,9 @@ export default function Home() {
 
       {/* Credits Section */}
       <div className="max-w-xl">
-        <h2 className={`${biorhyme.className} text-2xl mt-16 mb-4`}>Credits</h2>
+        <h2 className={`${rubikCube.className} text-4xl mt-16 mb-4`}>
+          Credits
+        </h2>
         <p className="max-w-prose leading-loose mb-4">
           Professor{" "}
           <a
