@@ -695,7 +695,7 @@ export default function Home() {
         Color Matching Functions! Maxwell was able to do all this using
         elementary tools.
       </p>
-      <div className="max-w-3xl mt-12 mb-12">
+      <div className="max-w-5xl mt-12 mb-12">
         <Image
           src="/maxwell-results.png"
           alt="figure-1"
