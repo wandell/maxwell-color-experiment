@@ -175,7 +175,7 @@ export default function MatchingTable({
             </td>
             {/* Target Cell */}
             <td>
-              <div className="flex gap-2 pt-2 pb-2">
+              <div className="group flex gap-2 pt-2 pb-2">
                 <ColorBox
                   color={
                     isRexpressed
@@ -186,6 +186,16 @@ export default function MatchingTable({
                   border={true}
                   max={100}
                 />
+                {isRexpressed ? (
+                  <div
+                    className="invisible group-hover:visible  
+            absolute ml-[35px] mt-[-5px] p-[5px] pl-[10px] pr-[10px] w-[auto] h-[auto] bg-[#373737] text-white rounded-md"
+                  >
+                    ≈ {colorRow.base.nm} nm
+                  </div>
+                ) : (
+                  <div></div>
+                )}
               </div>
             </td>
           </tr>
