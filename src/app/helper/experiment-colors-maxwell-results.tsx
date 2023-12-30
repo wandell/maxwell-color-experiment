@@ -73,6 +73,13 @@ const color44: ColorData = {
   nm: 515,
   weight: 0,
 };
+
+const color46: ColorData = {
+  name: "Bluish Green",
+  nm: 515,
+  weight: 0,
+};
+
 const color48: ColorData = {
   name: "Bluish Green",
   nm: 495,
@@ -138,45 +145,52 @@ function addWeights(color: ColorData, weight: number): ColorData {
 // The 3 base colors
 const round0: ColorRowData = {
   base: colorWhite,
-  slit1: addWeights(color24, 18.5),
-  slit2: addWeights(color44, 32.5),
-  slit3: addWeights(color68, 32),
+  slit1: addWeights(color24, 18.6),
+  slit2: addWeights(color44, 31.4),
+  slit3: addWeights(color68, 30.5),
 };
 
 // Changing the Blue Wavelength
 const round1: ColorRowData = {
   base: color80,
+  slit1: addWeights(color24, 18.3),
+  slit2: addWeights(color44, 33.2),
+  slit3: addWeights(color80, 63.7),
+};
+
+const round1a: ColorRowData = {
+  base: color76,
   slit1: addWeights(color24, 17.5),
-  slit2: addWeights(color44, 32.5),
-  slit3: addWeights(color80, 63),
+  slit2: addWeights(color44, 30.7),
+  slit3: addWeights(color76, 44),
 };
 
 const round2: ColorRowData = {
   base: color72,
   slit1: addWeights(color24, 18),
-  slit2: addWeights(color44, 32.5),
-  slit3: addWeights(color72, 35),
+  slit2: addWeights(color44, 31.2),
+  slit3: addWeights(color72, 32.3),
 };
 
 const round3: ColorRowData = {
   base: color64,
-  slit1: addWeights(color24, 19),
-  slit2: addWeights(color44, 30.5),
-  slit3: addWeights(color64, 35),
+  slit1: addWeights(color24, 19.7),
+  slit2: addWeights(color44, 30.3),
+  slit3: addWeights(color64, 33.7),
 };
 
 const round4: ColorRowData = {
   base: color60,
-  slit1: addWeights(color24, 20),
-  slit2: addWeights(color44, 23),
-  slit3: addWeights(color60, 39),
+  slit1: addWeights(color24, 20.5),
+  slit2: addWeights(color44, 23.7),
+  slit3: addWeights(color60, 40.5),
 };
 
 const round5: ColorRowData = {
   base: color56,
-  slit1: addWeights(color24, 21),
-  slit2: addWeights(color44, 14),
-  slit3: addWeights(color56, 58),
+  slit1: addWeights(color24, 21.7),
+  slit2: addWeights(color44, 10.4),
+  slit3: addWeights(color56, 61.7),
 };
 
 // Changing the Green Wavelength
@@ -185,61 +199,70 @@ const round6: ColorRowData = {
   base: color52,
   slit1: addWeights(color24, 22),
   slit2: addWeights(color52, 62),
-  slit3: addWeights(color68, 11),
+  slit3: addWeights(color68, 13),
 };
 
 const round7: ColorRowData = {
   base: color48,
-  slit1: addWeights(color24, 22),
-  slit2: addWeights(color48, 42),
-  slit3: addWeights(color68, 29.5),
+  slit1: addWeights(color24, 21.2),
+  slit2: addWeights(color48, 41.4),
+  slit3: addWeights(color68, 27),
+};
+
+const round8a: ColorRowData = {
+  base: color46,
+  slit1: addWeights(color24, 19.8),
+  slit2: addWeights(color46, 35),
+  slit3: addWeights(color68, 30.2),
 };
 
 const round8: ColorRowData = {
   base: color40,
-  slit1: addWeights(color24, 16),
-  slit2: addWeights(color40, 28),
-  slit3: addWeights(color68, 32.5),
+  slit1: addWeights(color24, 15.3),
+  slit2: addWeights(color40, 26),
+  slit3: addWeights(color68, 31.3),
 };
 
 const round9: ColorRowData = {
   base: color36,
-  slit1: addWeights(color24, 6),
-  slit2: addWeights(color36, 27),
-  slit3: addWeights(color68, 32.5),
+  slit1: addWeights(color24, 6.4),
+  slit2: addWeights(color36, 25.2),
+  slit3: addWeights(color68, 31.3),
 };
 
 // Changing the Red Wavelengths
 const round10: ColorRowData = {
   base: color32,
-  slit1: addWeights(color32, 23),
-  slit2: addWeights(color44, 11.5),
-  slit3: addWeights(color68, 32.5),
+  slit1: addWeights(color32, 22),
+  slit2: addWeights(color44, 12.1),
+  slit3: addWeights(color68, 30.6),
 };
 
 const round11: ColorRowData = {
   base: color28,
-  slit1: addWeights(color28, 17),
-  slit2: addWeights(color44, 26),
-  slit3: addWeights(color68, 32.5),
+  slit1: addWeights(color28, 16.1),
+  slit2: addWeights(color44, 25.6),
+  slit3: addWeights(color68, 30.6),
 };
 const round12: ColorRowData = {
   base: color20,
-  slit1: addWeights(color20, 46),
-  slit2: addWeights(color44, 26),
-  slit3: addWeights(color68, 33),
+  slit1: addWeights(color20, 44.3),
+  slit2: addWeights(color44, 31),
+  slit3: addWeights(color68, 27.7),
 };
 
 export default function experimentColorsMaxwellResults(): ColorRowData[] {
   return [
     round0,
     round1,
+    round1a,
     round2,
     round3,
     round4,
     round5,
     round6,
     round7,
+    // round8a,
     round8,
     round9,
     round10,

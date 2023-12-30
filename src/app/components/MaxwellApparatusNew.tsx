@@ -160,14 +160,14 @@ export default function MaxwellApparatusNew({
           xmlnsXlink="http://www.w3.org/1999/xlink"
           className="m-0 xl:ml-[90px]"
         >
-          <rect width="1093" height="424" fill="#F5F5F5" />
+          <rect width="1093" height="424" fill="#FBFBFB" />
           <g id="Apparatus Master">
-            <rect
+            {/* <rect
               width="1951"
               height="926"
               transform="translate(-379 -251)"
               fill="#fbfbfb"
-            />
+            /> */}
             <g id="Apparatus" clipPath="url(#clip0_0_1)">
               <g id="Observer View">
                 <path

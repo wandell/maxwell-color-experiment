@@ -30,3 +30,7 @@ body {
 .rc-slider-disabled {
   background-color: #fbfbfb !important;
 }
+
+a {
+  text-decoration: underline;
+}

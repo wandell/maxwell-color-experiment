@@ -20,11 +20,13 @@ export default function MaxwellApparatusWrapper({
   p2,
   p3,
   isLocked,
+  setWidthValue,
 }: {
   p1: number;
   p2: number;
   p3: number;
   isLocked: boolean;
+  setWidthValue: React.Dispatch<React.SetStateAction<number[]>>;
 }) {
   const defaultSlitWidth = 30;
   const defaultRed = p1;
@@ -84,17 +86,25 @@ export default function MaxwellApparatusWrapper({
     value: number | number[],
     sliderId: number
   ) => {
+    // Use a temporary variable to hold the new sizes.
+    let newS1Size = s1Size;
+    let newS2Size = s2Size;
+    let newS3Size = s3Size;
+
     if (Array.isArray(value)) {
       // Handle the case when the value is an array
       // For your case, you might take the first element of the array or handle it differently
       switch (sliderId) {
         case 1:
+          newS1Size = value[0];
           sets1Size(value[0]);
           break;
         case 2:
+          newS2Size = value[0];
           sets2Size(value[0]);
           break;
         case 3:
+          newS3Size = value[0];
           sets3Size(value[0]);
           break;
       }
@@ -102,17 +112,21 @@ export default function MaxwellApparatusWrapper({
       // Handle the case when the value is a number
       switch (sliderId) {
         case 1:
+          newS1Size = value;
           sets1Size(value);
           break;
         case 2:
+          newS2Size = value;
           sets2Size(value);
           break;
         case 3:
+          newS3Size = value;
           sets3Size(value);
           break;
       }
       // console.log(value);
     }
+    setWidthValue([newS1Size, newS2Size, newS3Size]);
   };
 
   const style = (rgb: number[]) => {
