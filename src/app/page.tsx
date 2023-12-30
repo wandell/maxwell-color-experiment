@@ -485,6 +485,14 @@ export default function Home() {
           </b>
         </p>
       </div>
+      <div className="max-w-xl mt-12 mb-12">
+        <Image
+          src="/plotted-results.png"
+          alt="figure-1"
+          width={8250}
+          height={5196}
+        />
+      </div>
       <div className="max-w-3xl mt-12 mb-12">
         <Image
           src="/maxwell-results.png"
