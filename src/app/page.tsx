@@ -91,14 +91,14 @@ export default function Home() {
         </p>
         <hr className="m-4 solid mt-12" />
         <p className="max-w-prose leading-loose">
-          <b>Note:</b> This is still a draft version.
+          <b>Note:</b> This is still a working draft version.
         </p>
         <p className="max-w-prose leading-loose mb-4">
           The content is still being refined before opening it to the public.{" "}
         </p>
         <p className="max-w-prose leading-loose mb-4">
           <i>
-            <b>Last Updated:</b> 06:50 Saturday, December 30, 2023 (PST)
+            <b>Last Updated:</b> 19:30 Saturday, December 30, 2023 (PST)
           </i>
         </p>
         <hr className="m-4 solid mb-12" />
