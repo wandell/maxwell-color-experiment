@@ -45,11 +45,22 @@ export default function Home() {
 
   // This is just for internal calc, not used in production code
   // const myExperimentNm = [
-  //   650, 620, 595, 570, 550, 535, 515, 495, 490, 475, 465, 455, 445, 435, 430,
-  //   420,
+  //   700, 670, 640, 610, 580, 550, 520, 490, 460, 430, 400,
   // ];
 
   // myExperimentNm.forEach((nm) => console.log(nmToRGB(nm)));
+
+  // [44, 0, 0]
+  // [128, 0, 0]
+  // [255, 0, 0]
+  // [255, 0, 0]
+  // [255, 210, 0]
+  // [121, 255, 0]
+  // [0, 255, 0]
+  // [0, 209, 164]
+  // [0, 39, 255]
+  // [119, 0, 255]
+  // [34, 0, 85]
 
   return (
     <main
@@ -757,7 +768,20 @@ export default function Home() {
           his contributions to the trichromacy theory.
         </p>
         <p className="max-w-prose leading-loose mb-4">
-          <b>Psych 221 class / ISETCAM</b>
+          <a href="https://github.com/isetbio/isetfundamentals" target="_blank">
+            isetfundamentals
+          </a>{" "}
+          library for providing the Judd estimates from Maxwell's experiment to
+          nm, as well as for adjusting the Judd estimates by 12nm.
+        </p>
+        <p className="max-w-prose leading-loose mb-4">
+          <a
+            href="https://vista.su.domains/psych221wiki/index.php?title=Main_Page"
+            target="_blank"
+          >
+            Psych 221: Image Systems Engineering
+          </a>{" "}
+          class at Stanford
         </p>
         <p className="max-w-prose leading-loose mb-4">
           The{" "}
