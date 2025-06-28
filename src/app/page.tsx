@@ -73,7 +73,7 @@ export default function Home() {
         <p
           className={`${inter.className} text-s mt-8 max-w-prose text-gray-600`}
         >
-          by Koh Terai
+          by <a href="https://kohterai.com/" target="_blank">Koh Terai</a>
         </p>
         <p className={` ${inter.className} text-sm max-w-prose text-gray-400`}>
           with the guidance of{" "}
@@ -90,12 +90,7 @@ export default function Home() {
           at Stanford University
         </p>
         <hr className="m-4 solid mt-12" />
-        <p className="max-w-prose leading-loose">
-          <b>Note:</b> This is still a working draft version.
-        </p>
-        <p className="max-w-prose leading-loose mb-4">
-          The content is still being refined before opening it to the public.{" "}
-        </p>
+
         <p className="max-w-prose leading-loose mb-4">
           <i>
             <b>Last Updated:</b> 19:30 Saturday, December 30, 2023 (PST)
