@@ -17,6 +17,9 @@ import { nmToRGB, nmToRGBMixed } from "./helper/color-conversion";
 import experimentColorsMaxwellResultsReexpressed from "./helper/experiment-colors-maxwell-results-reexpressed";
 import ColorEquation from "./components/ColorEquation";
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "/maxwell-color-experiment";
+const asset = (path: string) => `${basePath}${path}`;
+
 export default function Home() {
   // To store the values from the experiemnts that the user does
   const [ex0Value, setEx0Value] = useState<number[]>([30, 30, 30]);
@@ -154,7 +157,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-5xl mt-8 mb-2">
-        <Image src="/figure-1.png" alt="figure-1" width={4640} height={1696} />
+        <Image src={asset("/figure-1.png")} alt="figure-1" width={4640} height={1696} />
       </div>
       <div className="max-w-xl text-center">
         <b>Note:</b> <em>The figure not to scale</em>
@@ -168,7 +171,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12">
-        <Image src="/figure-2a.png" alt="figure-1" width={5032} height={1524} />
+        <Image src={asset("/figure-2a.png")} alt="figure-1" width={5032} height={1524} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -178,7 +181,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12">
-        <Image src="/figure-2b.png" alt="figure-1" width={5032} height={1532} />
+        <Image src={asset("/figure-2b.png")} alt="figure-1" width={5032} height={1532} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -210,7 +213,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12 mb-12">
-        <Image src="/figure-2c.png" alt="figure-1" width={5312} height={1844} />
+        <Image src={asset("/figure-2c.png")} alt="figure-1" width={5312} height={1844} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -243,7 +246,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12 mb-12">
-        <Image src="/figure-2d.png" alt="figure-1" width={5312} height={1844} />
+        <Image src={asset("/figure-2d.png")} alt="figure-1" width={5312} height={1844} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -254,7 +257,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12 mb-12">
-        <Image src="/figure-2e.png" alt="figure-1" width={5312} height={1844} />
+        <Image src={asset("/figure-2e.png")} alt="figure-1" width={5312} height={1844} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -264,7 +267,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-4 mb-12">
-        <Image src="/figure-3.png" alt="figure-1" width={5312} height={1804} />
+        <Image src={asset("/figure-3.png")} alt="figure-1" width={5312} height={1804} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -296,7 +299,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12 mb-12">
-        <Image src="/figure-4a.png" alt="figure-1" width={5312} height={1804} />
+        <Image src={asset("/figure-4a.png")} alt="figure-1" width={5312} height={1804} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -306,7 +309,7 @@ export default function Home() {
         </p>
       </div>
       <div className="max-w-6xl mt-12 mb-12">
-        <Image src="/figure-4b.png" alt="figure-1" width={5312} height={1804} />
+        <Image src={asset("/figure-4b.png")} alt="figure-1" width={5312} height={1804} />
       </div>
       <div className="max-w-xl">
         <p className="max-w-prose leading-loose mb-4">
@@ -360,7 +363,7 @@ export default function Home() {
       </div>
       <div className="max-w-xl mt-12 mb-12">
         <Image
-          src="/matchexample.png"
+          src={asset("/matchexample.png")}
           alt="figure-1"
           width={3210}
           height={1320}
@@ -581,7 +584,7 @@ export default function Home() {
 
         <div className="max-w-6xl mt-4 mb-4">
           <Image
-            src="/Equation-1.png"
+            src={asset("/Equation-1.png")}
             alt="figure-1"
             width={3100}
             height={125}
@@ -591,7 +594,7 @@ export default function Home() {
         <p className="max-w-prose leading-loose mb-4 mt-8">With red he got:</p>
         <div className="max-w-6xl mt-4 mb-4">
           <Image
-            src="/Equation-2.png"
+            src={asset("/Equation-2.png")}
             alt="figure-1"
             width={3100}
             height={125}
@@ -606,7 +609,7 @@ export default function Home() {
       <div className="max-w-2xl mt-4 mb-5 gap-7 flex-col">
         <div className="max-w-8xl mt-4 mb-4">
           <Image
-            src="/Equation-3.png"
+            src={asset("/Equation-3.png")}
             alt="figure-1"
             width={4325}
             height={125}
@@ -620,7 +623,7 @@ export default function Home() {
       <div className="max-w-2xl mt-2 mb-5 gap-7 flex-col">
         <div className="max-w-8xl mt-4 mb-5">
           <Image
-            src="/Equation-4.png"
+            src={asset("/Equation-4.png")}
             alt="figure-1"
             width={4325}
             height={125}
@@ -628,7 +631,7 @@ export default function Home() {
         </div>
         <div className="max-w-8xl mt-4 mb-5">
           <Image
-            src="/Equation-5.png"
+            src={asset("/Equation-5.png")}
             alt="figure-1"
             width={4325}
             height={125}
@@ -642,7 +645,7 @@ export default function Home() {
         </p>
         <div className="max-w-sm mt-2 mb-4">
           <Image
-            src="/Equation-6.png"
+            src={asset("/Equation-6.png")}
             alt="figure-1"
             width={1850}
             height={125}
@@ -667,7 +670,7 @@ export default function Home() {
       </div>
       <div className="max-w-xl mt-12 mb-12">
         <Image
-          src="/plotted-results.png"
+          src={asset("/plotted-results.png")}
           alt="figure-1"
           width={8250}
           height={5196}
@@ -703,7 +706,7 @@ export default function Home() {
       </p>
       <div className="max-w-5xl mt-12 mb-12">
         <Image
-          src="/maxwell-results.png"
+          src={asset("/maxwell-results.png")}
           alt="figure-1"
           width={5180}
           height={2072}
