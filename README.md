@@ -1,3 +1,13 @@
+Koh Terai's deployment is on vercel.
+
+I modified this to deploy onto github.io (gh-pages) so that it would be integrated with the Foundations of Image Systems Engineering book.
+
+I think the [GH Pages website is](https://wandell.github.io/maxwell-color-experiment/).
+
+
+
+## Koh's original Readme
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
